@@ -37,7 +37,6 @@ export class OAuthService {
     }
 
     public login(): Window {
-        var loginWindow = window.open(this.generateLoginUrl(), '_blank', 'location=no,toolbar=no');
         var loginWindow = window.open(this.generateLoginUrl(), '_blank', 'location=no,closebuttoncaption=Done');
         var myCallback = function(event) { alert(event.url); }
         loginWindow.addEventListener('loadstart', myCallback);
