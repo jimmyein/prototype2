@@ -12,7 +12,7 @@ export class OAuthService {
 
     constructor() {
         this.loginUrl = "https://login.live.com/oauth20_authorize.srf";
-        this.redirectUrl = "";
+        this.redirectUrl = "http://localhost";
         //this.clientID = "000000004811DB42";
         this.clientID = "1a342a7e-b5cf-450e-9188-4a8970e4af9e";
         //this.scope = "service::https://intkds.dns-cargo.com::MBI_SSL";
@@ -36,11 +36,27 @@ export class OAuthService {
         return url;
     }
 
-    public login(): Window {
-        var loginWindow = window.open(this.generateLoginUrl(), '_blank', 'location=no,closebuttoncaption=Done');
-        var myCallback = function(event) { alert(event.url); }
-        loginWindow.addEventListener('loadstart', myCallback);
-        return loginWindow;
+    public login() {
+        return new Promise((resolve, reject) => {
+            var browserRef = window.open(this.generateLoginUrl(), "_blank", "location=no,clearsessioncache=yes,clearcache=yes,closebuttoncaption=Done");
+            browserRef.addEventListener("loadstart", (event) => {
+                if ((event.url).indexOf(this.redirectUrl) === 0) {
+                    browserRef.removeEventListener("exit", (event) => { });
+                    browserRef.close();
+                    var parsedResponse = this.parseImplicitResponse(((event.url).split("#")[1]).split("&"));
+
+                    if (parsedResponse) {
+                        resolve(parsedResponse);
+                    } else {
+                        reject("Having problem authenticating");
+                    }
+                }
+            });
+
+            browserRef.addEventListener("exit", function (event) {
+                reject("The sign in flow was canceled");
+            });
+        });
     }
 
     public logoff() {
@@ -77,5 +93,18 @@ export class OAuthService {
         });
 
         return obj;
+    }
+
+
+    private parseImplicitResponse(responseParameters: Array<String>): Object {
+        var parameterMap = {};
+        for (var i = 0; i < responseParameters.length; i++) {
+            parameterMap[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
+        }
+        if (parameterMap["access_token"] !== undefined && parameterMap["access_token"] !== null) {
+            return parameterMap;
+        } else {
+            return null;
+        }
     }
 }
