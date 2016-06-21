@@ -1,0 +1,89 @@
+<ion-navbar *navbar dark class="show-navbar">
+  <ion-title>My Workout</ion-title>
+  <button menuToggle>
+    <ion-icon name='menu'></ion-icon>
+  </button>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+
+    <ion-list-header>
+      Today
+    </ion-list-header>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcdkc_m4_h400_w600.jpg">
+      </ion-avatar>
+      <h2>Tabata Squat Thrusts</h2>
+      <h3>Muscle Endurance</h3>
+      <button clear (click)="toggle()">Detail</button>
+      <p class="wrap" [hidden]="!showDetail">The Tabata Protocol is a four-minute, high intensity workout where you perform as many reps as possible during a 20
+        second work period, followed by 10 seconds of rest, repeated 8 times.</p>
+      <div [hidden]="!showDetail">
+        <base-chart class="chart" [data]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [chartType]="lineChartType"></base-chart>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcaHm_m4_h400_w600.png">
+      </ion-avatar>
+      <h2>Tabata Lunges</h2>
+      <h3>Muscle Endurance</h3>
+      <p class="wrap">Perform as many reps as possible during the 20 seconds of work, rest for 10 The Tabata Protocol is a four-minute, high
+        intensity workout where you perform as many reps as possible during a 20 second work period, followed by 10 seconds
+        of rest, repeated 8 times.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfci26_m4_h400_w600.png">
+      </ion-avatar>
+      <h2>Tabata Intro Lunges, Crunches, Burpees & Planks</h2>
+      <h3>Muscle Endurance</h3>
+      <p class="wrap">The Tabata Protocol is a four-minute, high intensity workout where you perform as many reps as possible during a 20
+        second work period, followed by 10 seconds of rest, repeated 8 times.</p>
+    </ion-item>
+
+  </ion-list>
+
+
+  <ion-list>
+    <ion-list-header>
+      Last Week
+    </ion-list-header>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcntA_m4_h400_w600.jpg">
+      </ion-avatar>
+      <h2>Tabata Planks</h2>
+      <h3>Muscle Endurance</h3>
+      <p class="wrap">The Tabata Protocol is a four-minute, high intensity workout where you perform as many reps as possible during a 20
+        second work period, followed by 10 seconds of rest, repeated 8 times.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/AA8MPTK_m4_h400_w600.jpg">
+      </ion-avatar>
+      <h2>Indoor Bike Tabata Sprints</h2>
+      <h3>Cardio, Muscle Endurance</h3>
+      <p class="wrap">In this 4 minute workout you will crush your legs with just an exercise bike. </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="https://img.s-msn.com/tenant/amp/entityid/BBjYAUe_m4_h400_w600.img">
+      </ion-avatar>
+      <h2>5 Minute Golf Warmup</h2>
+      <h3>Muscle Endurance, Power</h3>
+      <p class="wrap">This 5 minute workout will get you warm and limber for a great game of golf! You can do this workout at home, or at
+        the course. For best results, perform this workout 2-3 times a week. You can use your club for stability, or assistance
+        with any of the exercises.</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
