@@ -9,13 +9,12 @@ export class OAuthService {
     public redirectUrl: string;
     public oauthUrl: string;
     public tokenStore: Storage;
+    public access_token: string;
 
     constructor() {
         this.loginUrl = "https://login.live.com/oauth20_authorize.srf";
         this.redirectUrl = "http://localhost";
-        //this.clientID = "000000004811DB42";
         this.clientID = "1a342a7e-b5cf-450e-9188-4a8970e4af9e";
-        //this.scope = "service::https://intkds.dns-cargo.com::MBI_SSL";
         this.scope = "https://outlook.office.com/mail.read https://outlook.office.com/mail.send";
         this.responseType = "token";
         this.tokenStore = window.sessionStorage;
@@ -36,20 +35,24 @@ export class OAuthService {
         return url;
     }
 
-    public login() {
+    public login(): Promise<Object> {
         return new Promise((resolve, reject) => {
             var browserRef = window.open(this.generateLoginUrl(), "_blank", "location=no,clearsessioncache=yes,clearcache=yes,closebuttoncaption=Done");
             browserRef.addEventListener("loadstart", (event) => {
-                if ((event.url).indexOf(this.redirectUrl) === 0) {
+                if ((event.url).indexOf(this.redirectUrl) != -1) {
                     browserRef.removeEventListener("exit", (event) => { });
-                    browserRef.close();
                     var parsedResponse = this.parseImplicitResponse(((event.url).split("#")[1]).split("&"));
 
                     if (parsedResponse) {
+                        window.localStorage.setItem("MSA", parsedResponse["access_token"]);
+                        window.alert("Login successful");
                         resolve(parsedResponse);
                     } else {
+                        window.alert("Login failed");
                         reject("Having problem authenticating");
                     }
+                    
+                    browserRef.close();
                 }
             });
 
@@ -61,25 +64,6 @@ export class OAuthService {
 
     public logoff() {
         //TODO
-    }
-
-    public oauthCallback(url) {
-        // Parse the OAuth data received from Facebook
-        var queryString,
-            obj;
-
-        // if (url.indexOf("access_token=") > 0) {
-        queryString = url.substr(url.indexOf('#') + 1);
-        obj = this.parseQueryString(queryString);
-        //this.tokenStore.getItem("fbAccessToken) = obj['access_token'];
-        //     if (loginCallback) loginCallback({ status: 'connected', authResponse: { accessToken: obj['access_token'] } });
-        // } else if (url.indexOf("error=") > 0) {
-        //     queryString = url.substring(url.indexOf('?') + 1, url.indexOf('#'));
-        //     obj = this.parseQueryString(queryString);
-        //     if (loginCallback) loginCallback({ status: 'not_authorized', error: obj.error });
-        // } else {
-        //     if (loginCallback) loginCallback({ status: 'not_authorized' });
-        // }
     }
 
     private parseQueryString(queryString) {
