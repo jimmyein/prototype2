@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
 
+interface MyEvent extends Event {
+    url: string;
+}
+
 @Injectable()
 export class GuidedWorkoutService {
     private DashBoardSigninUrl = "https://dashboard.microsofthealth.com/Home/MobileRedirect";
@@ -31,7 +35,7 @@ export class GuidedWorkoutService {
     public signInDashboard() {
         return new Promise((resolve, reject) => {
             var browserRef = window.open(this.DashBoardSigninUrl, "_blank", "location=no, closebuttoncaption=Done");
-            browserRef.addEventListener("loadstart", (event) => {
+            browserRef.addEventListener("loadstart", (event: MyEvent) => {
                 if (event.url == "https://dashboard.microsofthealth.com/") {
                     resolve();
                     browserRef.close();

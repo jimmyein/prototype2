@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+interface MyEvent extends Event {
+    url: string;
+}
+
 @Injectable()
 export class OAuthService {
     public loginUrl: string;
@@ -39,7 +43,7 @@ export class OAuthService {
         return new Promise((resolve, reject) => {
             //clearsessioncache=yes,clearcache=yes
             var browserRef = window.open(this.generateLoginUrl(), "_blank", "location=no,closebuttoncaption=Done");
-            browserRef.addEventListener("loadstart", (event) => {
+            browserRef.addEventListener("loadstart", (event: MyEvent) => {
                 if ((event.url).indexOf(this.redirectUrl) != -1) {
                     browserRef.removeEventListener("exit", (event) => { });
                     var parsedResponse = this.parseImplicitResponse(((event.url).split("#")[1]).split("&"));
