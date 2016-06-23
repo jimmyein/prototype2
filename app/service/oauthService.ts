@@ -37,7 +37,8 @@ export class OAuthService {
 
     public login(): Promise<Object> {
         return new Promise((resolve, reject) => {
-            var browserRef = window.open(this.generateLoginUrl(), "_blank", "location=no,clearsessioncache=yes,clearcache=yes,closebuttoncaption=Done");
+            //clearsessioncache=yes,clearcache=yes
+            var browserRef = window.open(this.generateLoginUrl(), "_blank", "location=no,closebuttoncaption=Done");
             browserRef.addEventListener("loadstart", (event) => {
                 if ((event.url).indexOf(this.redirectUrl) != -1) {
                     browserRef.removeEventListener("exit", (event) => { });
@@ -51,7 +52,7 @@ export class OAuthService {
                         window.alert("Login failed");
                         reject("Having problem authenticating");
                     }
-                    
+
                     browserRef.close();
                 }
             });
