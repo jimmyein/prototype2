@@ -1,3 +1,6 @@
+
+// Use Microsoft dashboard to grant acess to the guided workout
+// Later we need to host our own endpoint/service to guided workouts
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
 
@@ -14,24 +17,7 @@ export class GuidedWorkoutService {
 
     }
 
-    /*
-        public CreateNewUserProfile() {
-            let header = new Headers();
-            header.append("Authorization", this.MSAToken);
-                    
-            let requestOptions = new RequestOptions({
-                headers: header,
-                method: RequestMethod.Get,
-            });
-            this.http.get(this.KDSEndPointAPIUrl, requestOptions).subscribe(response => {
-                window.alert(response.headers.get("Authorization"));
-            }, error => {
-                window.alert(error);
-            });
-        }
-    */
-
-    // sign in into dashboard, mainly for getting the cookies to query the guided workouts
+    // sign in into dashboard
     public signInDashboard() {
         return new Promise((resolve, reject) => {
             var browserRef = window.open(this.DashBoardSigninUrl, "_blank", "location=no, closebuttoncaption=Done");

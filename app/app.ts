@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {Platform, ionicBootstrap, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
-import {InMemoryMockDataService} from './mockData/mock_comments';
 import {LoginPage} from './pages/login-page/login-page';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 
@@ -10,6 +9,8 @@ import {HTTP_PROVIDERS} from '@angular/http';
 import {ROUTER_PROVIDERS} from '@angular/router';
 import {OAuthService} from './service/oauthService';
 import {GuidedWorkoutService} from './service/guidedWorkoutService'
+import {InMemoryMockDataService} from './mockData/mockData';
+
 
 @Component({
   templateUrl: 'build/app.html'
@@ -56,7 +57,8 @@ var providers = [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
   OAuthService,
-  GuidedWorkoutService
+  GuidedWorkoutService,
+  InMemoryMockDataService
 ];
 
 ionicBootstrap(MyApp, providers)
