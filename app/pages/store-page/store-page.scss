@@ -11,6 +11,31 @@
     left: 0;
 }
 
+.menuContainer {
+	border-bottom: white 3px solid;
+	height: 50px;
+}
+
+.menuText {
+    color: white;
+    font-size: 15px;
+    line-height: 50px;
+    width: 77px;
+    height: 50px;
+    display: inline-block;
+	text-align: center;
+}
+
+.menuSelected {
+	border-bottom: lime 3px solid;
+	padding-bottom: 13px;
+}
+
+.sliding-middle-out:hover:after {
+	width: 100%;
+	background: lime;
+}
+
 .background-imgs-container .background-imgs {
 	position: absolute;
     left: 0;

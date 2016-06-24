@@ -1,17 +1,50 @@
 import {Component} from '@angular/core';
 import {Platform} from 'ionic-angular';
-import {NavController} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
+import {WorkoutDto, QueryDto, OrderBy, DifficultyLevels} from '../../model/guidedWorkouts';
+import {GuidedWorkoutService} from '../../service/guidedWorkoutService'
 
 @Component({
   templateUrl: 'build/pages/detail-page/detail-page.html'
 })
 export class DetailPage {
 
-  constructor(private _navController: NavController, platform: Platform) {
-  
+  private filter: string;
+  private value: string;
+  public workouts: WorkoutDto[];
+
+  constructor(private navController: NavController, platform: Platform, navParams: NavParams, private guidedWorkoutService: GuidedWorkoutService) {
+    this.filter = navParams.get("filter") != undefined || null ? navParams.get("filter") : OrderBy[OrderBy.DIFFICULTY];
+    this.value = navParams.get("value") != undefined || null ? navParams.get("value") : DifficultyLevels[DifficultyLevels.Beginner];
+    this.workouts = this.filterWorkout();
+    //this.workouts = this.guidedWorkoutService.getGuidedWorkouts();
+
+    if (this.workouts == null || this.workouts == undefined) {
+      // TODO: ERROR HANDLE
+    }
+
   }
 
-goBack(){
-    this._navController.pop();
+  goBack() {
+    this.navController.pop();
+  }
+
+  private filterWorkout(): WorkoutDto[] {
+    switch (this.filter) {
+      case OrderBy[OrderBy.DIFFICULTY]:
+        let result: WorkoutDto[] = [];
+        this.guidedWorkoutService.getGuidedWorkouts().forEach((workout) => {
+          if (DifficultyLevels[workout.DifficultyLevel] == DifficultyLevels[this.value]) {
+            workout.Image = workout.Image.replace("h60", "h400");
+            workout.Image = workout.Image.replace("w60", "w500");
+            result.push(workout);
+          }
+        });
+
+        return result;
+
+      default:
+        return [];
+    }
   }
 }
