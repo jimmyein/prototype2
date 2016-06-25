@@ -15,9 +15,10 @@ export class StorePage {
 
   constructor(private navController: NavController,
     private guidedWorkoutService: GuidedWorkoutService) {
-    this.guidedWorkoutService.queryGuidedWorkout(OrderBy.DIFFICULTY, true, 200, "", "").then(() => {
+    
+    //this.guidedWorkoutService.queryGuidedWorkout(OrderBy.DIFFICULTY, true, 200, "", "").then(() => {
 
-    });
+    //});
   }
 
   goToDetailPage(filter: string, value: string) {
