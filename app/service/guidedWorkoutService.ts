@@ -24,7 +24,7 @@ export class GuidedWorkoutService {
         return new Promise((resolve, reject) => {
             var browserRef = window.open(this.DashBoardSigninUrl, "_blank", "location=no, closebuttoncaption=Done");
             browserRef.addEventListener("loadstart", (event: MyEvent) => {
-                if (event.url == "https://dashboard.microsofthealth.com/#/") {
+                if (event.url == "https://dashboard.microsofthealth.com/") {
                     resolve();
                     browserRef.close();
                 }
