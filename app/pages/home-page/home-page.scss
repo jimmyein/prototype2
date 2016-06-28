@@ -1,3 +1,113 @@
-.chart { 
-    display: block; 
+
+.homePage {
+    background-color: #1c1c1f;
+}
+
+.chartRadar { 
+    display: block;
+}
+
+.wrapper {
+  margin: 20px auto;
+  width: 300px;
+  background-color: transparent;
+}
+
+.wrapper .speedometer {
+  width: 300px;
+  height: 150px;
+  background: #496795;
+  border-radius: 200px 200px 0 0;
+  position: relative;
+}
+
+.wrapper .speedometer .speedometerMask {
+  width: 280px;
+  height: 140px;
+  background: #1c1c1f;
+  border-radius: 200px 200px 0 0;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.wrapper .speedometer .pointer {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+}
+
+.wrapper .speedometer .pointer:after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background: #6BA4FF;
+  position: absolute;
+  bottom: -10px;
+  left: -30px;
+}
+
+.wrapper .speedometer .pointer:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -5px;
+  bottom: 0px;
+  width: 10px;
+  height: 100px;
+  background: #FF7235;
+  border-radius: 40px 40px 0 0;
+  transform-origin: center 80px;
+  animation: roll 3s;
+  animation-iteration-count: 1;
+  transform: rotate(80deg);
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(80deg);
+  }
+}
+
+.spacer50 {
+    height: 50px;
+}
+
+.panelData {
+    text-align: center;
+}
+
+.panelIcon {
+    font-size: 40px;
+    color:#6BA4FF;
+    margin-bottom: 10px;
+}
+
+.panelTitleText {
+    font-family:  'Segoe UI Light';
+    font-size: 15px;
+    color:#6BA4FF;
+    margin-bottom: 4px;
+}
+
+.panelMetricNumText {
+    font-size: 20px;
+    font-family:  'Segoe UI Light';
+    color: white;
+}
+
+.panelMetricUnitText {
+    font-size: 8px;
+    font-family:  'Segoe UI Light';
+    color: white;
+}
+
+.radarChart {
+    width: 50px;
+    height: 100px;
 }

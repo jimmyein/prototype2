@@ -32,8 +32,6 @@ export class GuidedWorkoutService {
         });
     }
 
-
-
     // get guided workouts
     public queryGuidedWorkout(orderBy: OrderBy, orderByAscending: boolean, pageSize: number, filtersParam?: string, query?: string) {
         return new Promise((resolve, reject) => {

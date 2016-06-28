@@ -11,16 +11,25 @@ export class HomePage {
   public doughnutChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
   public doughnutChartData: number[] = [350, 450, 100];
   public doughnutChartType: string = 'doughnut';
-  public radarChartLabels: string[] = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
+  public radarChartLabels: string[] = ['Eating', 'Drinking', 'Sleeping', 'Hiking', 'Coding', 'Biking', 'Running'];
   public radarChartType: string = 'radar';
   public polarAreaChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
   public polarAreaChartData:number[] = [300, 500, 100, 40, 120];
   public polarAreaLegend:boolean = true;
   public polarAreaChartType:string = 'polarArea';
   public radarChartData: any = [
-    { data: [65, 59, 90, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 96, 27, 100], label: 'Series B' }
+    { data: [65, 59, 90, 81, 56, 55, 40], label: 'Series A' }
   ];
+
+  public radarChartColours:Array<any> = [
+    { 
+      backgroundColor: '#1c1c1f',
+      borderColor: '#FF7235',
+      pointBackgroundColor: '#6BA4FF',
+      pointBorderColor: 'transparent',
+      pointHoverBackgroundColor: 'white',
+      pointHoverBorderColor: 'white'
+    }];
 
 
   constructor(private _navController: NavController) {
