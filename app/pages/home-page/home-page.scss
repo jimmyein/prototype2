@@ -62,7 +62,7 @@
   transform-origin: center 80px;
   animation: roll 3s;
   animation-iteration-count: 1;
-  transform: rotate(80deg);
+  transform: rotate(60deg);
 }
 
 @keyframes roll {
@@ -70,7 +70,7 @@
     transform: rotate(-90deg);
   }
   to {
-    transform: rotate(80deg);
+    transform: rotate(60deg);
   }
 }
 
