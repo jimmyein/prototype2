@@ -10,6 +10,8 @@ import {ROUTER_PROVIDERS} from '@angular/router';
 import {OAuthService} from './service/oauthService';
 import {GuidedWorkoutService} from './service/guidedWorkoutService'
 import {InMemoryMockDataService} from './mockData/mockData';
+import {BackendServiceBase} from './service/backendServiceBase';
+import {BackendServiceClient} from './service/backendServiceClient';
 
 
 @Component({
@@ -22,7 +24,8 @@ export class MyApp {
   constructor(private platform: Platform,
     private menu: MenuController,
     private oauthService: OAuthService,
-    private guidedWorkoutService: GuidedWorkoutService) {
+    private guidedWorkoutService: GuidedWorkoutService,
+    private backendServiceClient: BackendServiceClient) {
 
     var storage = window.localStorage;
     menu.enable(true);
@@ -44,12 +47,17 @@ export class MyApp {
   }
 
   public login(): void {
-    this.guidedWorkoutService.signInDashboard();
+    //this.guidedWorkoutService.signInDashboard();
     //this.guidedWorkoutService.queryGuidedWorkout();
-    //this.oauthService.login().then(() => { });
+    this.oauthService.login().then(() => {
+      this.backendServiceClient.getKatToken().then(() => {
+        window.alert(window.localStorage.getItem("KatToken"));
+      });
+    });
   }
 
   public logout(): void {
+    window.alert(window.localStorage.getItem("KatToken"));
   }
 }
 
@@ -58,7 +66,9 @@ var providers = [
   ROUTER_PROVIDERS,
   OAuthService,
   GuidedWorkoutService,
-  InMemoryMockDataService
+  InMemoryMockDataService,
+  BackendServiceBase,
+  BackendServiceClient
 ];
 
 ionicBootstrap(MyApp, providers)

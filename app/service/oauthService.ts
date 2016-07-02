@@ -17,9 +17,15 @@ export class OAuthService {
 
     constructor() {
         this.loginUrl = "https://login.live.com/oauth20_authorize.srf";
-        this.redirectUrl = "http://localhost";
-        this.clientID = "1a342a7e-b5cf-450e-9188-4a8970e4af9e";
-        this.scope = "https://outlook.office.com/mail.read https://outlook.office.com/mail.send";
+        this.redirectUrl = "https://login.live.com/oauth20_desktop.srf";
+        // hackathon application ID
+        //this.clientID = "1a342a7e-b5cf-450e-9188-4a8970e4af9e";
+        // LiveConnectClientId
+        //this.clientID= "00000000441304D0";
+        // KCloudClientID
+        this.clientID = "000000004811DB42";
+        //this.scope = "https://outlook.office.com/mail.read https://outlook.office.com/mail.send";
+        this.scope = "service::intkds.dns-cargo.com::MBI_SSL";
         this.responseType = "token";
         this.tokenStore = window.sessionStorage;
     }
@@ -50,10 +56,8 @@ export class OAuthService {
 
                     if (parsedResponse) {
                         window.localStorage.setItem("MSA", parsedResponse["access_token"]);
-                        window.alert("Login successful");
                         resolve(parsedResponse);
                     } else {
-                        window.alert("Login failed");
                         reject("Having problem authenticating");
                     }
 
