@@ -34,11 +34,6 @@ export class DetailPage {
       case OrderBy[OrderBy.DIFFICULTY]:
         let result: WorkoutDto[] = [];
         this.guidedWorkoutService.getGuidedWorkouts().forEach((workout) => {
-          if (DifficultyLevels[workout.DifficultyLevel] == DifficultyLevels[this.value]) {
-            workout.Image = workout.Image.replace("h60", "h400");
-            workout.Image = workout.Image.replace("w60", "w500");
-            result.push(workout);
-          }
         });
 
         return result;

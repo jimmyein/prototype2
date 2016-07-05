@@ -8,10 +8,10 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {ROUTER_PROVIDERS} from '@angular/router';
 import {OAuthService} from './service/oauthService';
-import {GuidedWorkoutService} from './service/guidedWorkoutService'
 import {InMemoryMockDataService} from './mockData/mockData';
 import {BackendServiceBase} from './service/backendServiceBase';
-import {BackendServiceClient} from './service/backendServiceClient';
+import {WorkoutServiceClient} from './service/workoutServiceClient';
+import {GuidedWorkoutService} from './service/guidedWorkoutService';
 
 
 @Component({
@@ -24,20 +24,15 @@ export class MyApp {
   constructor(private platform: Platform,
     private menu: MenuController,
     private oauthService: OAuthService,
-    private guidedWorkoutService: GuidedWorkoutService,
-    private backendServiceClient: BackendServiceClient) {
+    private workoutServiceClient: WorkoutServiceClient,
+    private guidedWorkoutService: GuidedWorkoutService) {
 
     var storage = window.localStorage;
     menu.enable(true);
     // TODO: Verify the token
     // if token not exsist
     // TODO:if expired go refrsh token
-    if (storage.getItem("AccessToken") == null) {
-      //storage.setItem("AccessToken","test");
-      this.rootPage = LoginPage;
-    } else {
-      this.rootPage = LoginPage;
-    }
+    this.rootPage = LoginPage;
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -47,17 +42,14 @@ export class MyApp {
   }
 
   public login(): void {
-    //this.guidedWorkoutService.signInDashboard();
-    //this.guidedWorkoutService.queryGuidedWorkout();
     this.oauthService.login().then(() => {
-      this.backendServiceClient.getKatToken().then(() => {
-        window.alert(window.localStorage.getItem("KatToken"));
+      this.workoutServiceClient.getKatToken().then(() => {
+        window.alert("login successful!");
       });
     });
   }
 
   public logout(): void {
-    window.alert(window.localStorage.getItem("KatToken"));
   }
 }
 
@@ -68,7 +60,7 @@ var providers = [
   GuidedWorkoutService,
   InMemoryMockDataService,
   BackendServiceBase,
-  BackendServiceClient
+  WorkoutServiceClient
 ];
 
 ionicBootstrap(MyApp, providers)

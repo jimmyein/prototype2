@@ -15,6 +15,7 @@ export class BackendServiceBase {
 
     public apiGet(api: string,
         next: (data) => void,
+        jsonResponse: boolean,
         error?: (err) => void,
         complete?: () => void,
         resolveMessage?: string,
@@ -33,7 +34,7 @@ export class BackendServiceBase {
             this.http.get(url, options)
                 .map(
                 response => {
-                    return response.text();
+                    return jsonResponse ? response.json() : response.text();
                 })
                 .subscribe(
                 data => {
@@ -52,6 +53,7 @@ export class BackendServiceBase {
 
     public apiPost(api: string,
         body: string,
+        jsonResponse: boolean,
         next: (data) => void,
         error?: (err) => void,
         complete?: () => void,
@@ -72,6 +74,7 @@ export class BackendServiceBase {
                 .map(
                 response => {
                     map(response);
+                    return jsonResponse ? response.json() : response.text();
                 })
                 .subscribe(
                 data => {
@@ -88,12 +91,32 @@ export class BackendServiceBase {
         });
     }
 
+    public urlConstructor(baseUrl: string, ...params: { key: string; value: any }[]) {
+        params.forEach(param => {
+            if (baseUrl.indexOf("?") != -1) {
+                baseUrl += "&" + param.key + "=" + param.value;
+            } else {
+                baseUrl += "?" + param.key + "=" + param.value;
+            }
+        });
+
+        return baseUrl;
+    }
+
     // default header to call our mobile api
     private appendHeaderCredential(options: RequestOptions): void {
 
         var header = new Headers();
+        var kattoken = window.localStorage.getItem("KatToken");
+        var msatoken = window.localStorage.getItem("MSA")
         header.append('ZUMO-API-VERSION', '2.0.0');
-        header.append("acess_token", window.localStorage.getItem("MSA"));
+        if (msatoken != undefined || msatoken != null) {
+            header.append("acess_token", msatoken);
+        }
+
+        if (kattoken != undefined || kattoken != null) {
+            header.append("katToken", kattoken);
+        }
 
         if (options.headers == undefined || options.headers == null) {
             options.headers = header;

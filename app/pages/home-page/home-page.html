@@ -5,8 +5,61 @@
   <ion-title>Home</ion-title>
 </ion-navbar>
 
-
 <ion-content padding class="homePage">
+
+  <ion-content class="myWorkoutList">
+    <ion-list>
+
+      <ion-list-header class="myWorkoutListHeader">
+        Today
+      </ion-list-header>
+
+      <ion-item class="myWorkoutListItem">
+        <ion-avatar item-left>
+          <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcdkc_m4_h400_w600.jpg">
+        </ion-avatar>
+        <h2>Tabata Squat Thrusts</h2>
+        <h3>Muscle Endurance</h3>
+        <button clear (click)="toggle()">Detail</button>
+        <p class="wrap" [hidden]="!showDetail">The Tabata Protocol is a four-minute, high intensity workout where you perform as many reps as possible during a
+          20 second work period, followed by 10 seconds of rest, repeated 8 times.</p>
+        <div [hidden]="!showDetail">
+          <base-chart class="chart" [data]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [chartType]="lineChartType"></base-chart>
+        </div>
+      </ion-item>
+
+      <ion-item class="myWorkoutListItem">
+        <ion-avatar item-left>
+          <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcaHm_m4_h400_w600.png">
+        </ion-avatar>
+        <h2>Tabata Lunges</h2>
+        <h3>Muscle Endurance</h3>
+        <p class="wrap">Perform as many reps as possible during the 20 seconds of work, rest for 10 The Tabata Protocol is a four-minute,
+          high intensity workout where you perform as many reps as possible during a 20 second work period, followed by 10
+          seconds of rest, repeated 8 times.</p>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header class="myWorkoutListHeader">
+        Last Week
+      </ion-list-header>
+
+      <ion-item class="myWorkoutListItem">
+        <ion-avatar item-left>
+          <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcntA_m4_h400_w600.jpg">
+        </ion-avatar>
+        <h2>Tabata Planks</h2>
+        <h3>Muscle Endurance</h3>
+        <p class="wrap">The Tabata Protocol is a four-minute, high intensity workout where you perform as many reps as possible during a
+          20 second work period, followed by 10 seconds of rest, repeated 8 times.</p>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+
   <div class="wrapper">
     <div class="speedometer">
       <div class="speedometerMask"></div>
@@ -43,13 +96,12 @@
     </ion-col>
   </ion-row>
 
-  <div class="spacer50"></div>
 
   <!--<base-chart class="chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
     (chartClick)="chartClicked($event)"></base-chart>-->
 
-  <base-chart class="radarChart" [colors]="radarChartColours" [legend]="false" class="chartRadar" [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)"
-    (chartClick)="chartClicked($event)"></base-chart>
+  <!--<base-chart class="radarChart" [colors]="radarChartColours" [legend]="false" class="chartRadar" [datasets]="radarChartData"
+    [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></base-chart>-->
 
   <!--<base-chart class="chart" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType"
     (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></base-chart>-->

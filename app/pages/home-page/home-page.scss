@@ -1,4 +1,8 @@
 
+.chart { 
+    display: block; 
+}
+
 .homePage {
     background-color: #1c1c1f;
 }
@@ -110,4 +114,19 @@
 .radarChart {
     width: 50px;
     height: 100px;
+}
+
+.myWorkoutList {
+    height: 150px;
+    background-color:#1c1c1f;
+    color: white;
+}
+
+.myWorkoutList .myWorkoutListHeader {
+    color: white;
+}
+
+.myWorkoutList .myWorkoutListItem {
+    background-color:#1c1c1f;
+    color: white;
 }

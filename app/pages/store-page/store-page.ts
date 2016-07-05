@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {NavController, Toast} from 'ionic-angular';
 import {DetailPage} from '../detail-page/detail-page';
-import {GuidedWorkoutService} from '../../service/guidedWorkoutService';
+import {WorkoutServiceClient} from '../../service/workoutServiceClient';
 import {WorkoutDto, QueryDto, OrderBy} from '../../model/guidedWorkouts';
-
+import {GuidedWorkoutService} from '../../service/guidedWorkoutService';
 
 
 @Component({
@@ -14,11 +14,9 @@ export class StorePage {
   public DifficultyLevels: string[] = ["Beginner", "Intermediate", "Advanced"];
 
   constructor(private navController: NavController,
+    private workoutServiceClient: WorkoutServiceClient,
     private guidedWorkoutService: GuidedWorkoutService) {
-    
-    //this.guidedWorkoutService.queryGuidedWorkout(OrderBy.DIFFICULTY, true, 200, "", "").then(() => {
-
-    //});
+    this.workoutServiceClient.queryWorkout();
   }
 
   goToDetailPage(filter: string, value: string) {

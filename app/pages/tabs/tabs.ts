@@ -10,7 +10,6 @@ import {CommentsPage} from '../comments-page/comments-page';
 })
 export class TabsPage {
 
-  private tab1Root: any;
   private tab2Root: any;
   private tab3Root: any;
   private tab4Root: any;
@@ -18,7 +17,6 @@ export class TabsPage {
   constructor() {
     // this tells the tabs component which Pages
     // should be each tab's root Page
-    this.tab1Root = MyWorkoutPage;
     this.tab2Root = HomePage;
     this.tab3Root = StorePage;
     this.tab4Root = CommentsPage;

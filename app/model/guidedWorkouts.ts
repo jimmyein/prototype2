@@ -31,6 +31,29 @@ export class WorkoutDto {
     WorkoutTypeId: number;
 }
 
+export class ExerciseSearchResultDTO {
+      Id: string;
+      Name: string;
+      BodyParts: string[];
+      Image: string;
+      Level: string;
+      Type: string;
+      Category: string;
+      Equipment: string[];
+      Focus: string[];
+      LogDistance: boolean;
+      LogGPSDistance: boolean;
+      LogPedometerDistance: boolean;
+      KShowInTool: boolean;
+      Videos: ExerciseVideo[];
+}
+
+export class ExerciseVideo {
+    Angle: string;
+    VideoId: string;
+    VideoTitle: string;
+}
+
 export enum Brand {
     BenchmarkWOD,
     GoldsGym,
