@@ -33,7 +33,7 @@ export class MyApp {
     // if token not exsist
     // TODO:if expired go refrsh token
     if (window.localStorage.getItem("FTUset") == "true") {
-
+      this.rootPage = TabsPage;
     } else {
       this.rootPage = LoginPage;
     }
