@@ -32,7 +32,11 @@ export class MyApp {
     // TODO: Verify the token
     // if token not exsist
     // TODO:if expired go refrsh token
-    this.rootPage = LoginPage;
+    if (window.localStorage.getItem("FTUset") == "true") {
+
+    } else {
+      this.rootPage = LoginPage;
+    }
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -50,8 +54,13 @@ export class MyApp {
   }
 
   public logout(): void {
+
   }
+
+
 }
+
+
 
 var providers = [
   HTTP_PROVIDERS,

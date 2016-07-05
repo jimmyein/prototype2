@@ -21,15 +21,15 @@ export class WorkoutServiceClient {
             data => {
                 window.localStorage.setItem("KatToken", data);
             },
-            false
+            true
         );
     }
 
     public queryWorkout(count : number = 0, pageNumber: number = 1, query: string = ""): Promise<Object> {
-        var queryWorkoutUrl = this.backendServiceBase.urlConstructor(this.queryWorkoutApi, {key: "token", value: false},
-        { key: "count", value: count }, { key: "pageNumber", value: pageNumber });
+        // var queryWorkoutUrl = this.backendServiceBase.urlConstructor(this.queryWorkoutApi, {key: "token", value: false},
+        // { key: "count", value: count }, { key: "pageNumber", value: pageNumber });
 
-        return this.backendServiceBase.apiGet(queryWorkoutUrl,
+        return this.backendServiceBase.apiGet(this.queryWorkoutApi,
             data => {
                 this.guidedWorkoutService.setGuidedWokrouts(data);
             },
