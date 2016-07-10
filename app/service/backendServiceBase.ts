@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, RequestMethod, URLSearchParams } from '@angular/http';
+import { User } from "../model/User";
 
 interface MyEvent extends Event {
     url: string;
@@ -7,7 +8,11 @@ interface MyEvent extends Event {
 
 @Injectable()
 export class BackendServiceBase {
-    private fitlistBackendUrl = "http://fitlist.azurewebsites.net/";
+    private fitlistBackendUrl: string = "http://fitlist.azurewebsites.net/";
+    private MSAHeaderString: string = "acessToken";
+    private KATHeaderString: string = "katToken";
+    private ZUMOAPIVERSION: string = "2.0.0";
+    private ZUMOAPIVERSIONString: string = 'ZUMO-API-VERSION';
 
     constructor(private http: Http) {
 
@@ -27,7 +32,9 @@ export class BackendServiceBase {
             options = new RequestOptions();
         }
 
-        this.appendHeaderCredential(options);
+        let params: URLSearchParams = new URLSearchParams();
+
+        options.headers = this.getRequestedHeader();
         var url = this.fitlistBackendUrl + api;
 
         return new Promise((resolve, reject) => {
@@ -66,7 +73,7 @@ export class BackendServiceBase {
             options = new RequestOptions();
         }
 
-        this.appendHeaderCredential(options);
+        options.headers = this.getRequestedHeader();
         var url = this.fitlistBackendUrl + api;
 
         return new Promise((resolve, reject) => {
@@ -104,26 +111,27 @@ export class BackendServiceBase {
     }
 
     // default header to call our mobile api
-    private appendHeaderCredential(options: RequestOptions): void {
-
+    public getRequestedHeader(): Headers {
         var header = new Headers();
-        var kattoken = window.localStorage.getItem("KatToken");
-        var msatoken = window.localStorage.getItem("MSA")
-        header.append('ZUMO-API-VERSION', '2.0.0');
+        header.append(this.ZUMOAPIVERSIONString, this.ZUMOAPIVERSION);
+        var kattoken = User.KatToken;
+        var msatoken = User.MSAToken;
+
+        window.alert(User.MSAToken);
+
         if (msatoken != undefined || msatoken != null) {
-            header.append("acess_token", msatoken);
+            header.append(this.MSAHeaderString, msatoken);
+        } else {
+            // TODO: Redirect to sign-in page
         }
 
         if (kattoken != undefined || kattoken != null) {
-            header.append("katToken", kattoken);
+            header.append(this.KATHeaderString, kattoken);
+        } else {
+            // TODO: Redirect to sign-in page
         }
 
-        if (options.headers == undefined || options.headers == null) {
-            options.headers = header;
-        } else {
-            options.headers.append('ZUMO-API-VERSION', '2.0.0');
-            options.headers.append("acess_token", window.localStorage.getItem("MSA"));
-        }
+        return header;
     }
 
 }

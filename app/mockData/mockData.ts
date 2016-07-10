@@ -1,4 +1,6 @@
-import {Comment, Slide} from '../model/models';
+import {Slide} from '../model/Slide';
+import {Comment} from '../model/Comment';
+
 
 export class InMemoryMockDataService {
 

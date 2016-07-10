@@ -9,9 +9,3 @@ export class Comment {
   avatarUrl: string;
   imageUrl: string;
 }
-
-export class Slide {
-    title: string;
-    description: string;
-    imageUrl: string;
-}

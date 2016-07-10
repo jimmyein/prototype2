@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Loading, NavController} from 'ionic-angular';
-import {Comment} from '../../model/models';
+import {Comment} from '../../model/Comment';
 import {InMemoryMockDataService} from '../../mockData/mockData';
 
 @Component({

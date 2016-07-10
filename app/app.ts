@@ -7,7 +7,7 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 
 import {HTTP_PROVIDERS} from '@angular/http';
 import {ROUTER_PROVIDERS} from '@angular/router';
-import {OAuthService} from './service/oauthService';
+import {AuthenticationService} from './service/authenticationService';
 import {InMemoryMockDataService} from './mockData/mockData';
 import {BackendServiceBase} from './service/backendServiceBase';
 import {WorkoutServiceClient} from './service/workoutServiceClient';
@@ -23,7 +23,7 @@ export class MyApp {
 
   constructor(private platform: Platform,
     private menu: MenuController,
-    private oauthService: OAuthService,
+    private authenticationService: AuthenticationService,
     private workoutServiceClient: WorkoutServiceClient,
     private guidedWorkoutService: GuidedWorkoutService) {
 
@@ -46,7 +46,7 @@ export class MyApp {
   }
 
   public login(): void {
-    this.oauthService.login().then(() => {
+    this.authenticationService.login().then(() => {
       this.workoutServiceClient.getKatToken().then(() => {
         window.alert("login successful!");
       });
@@ -65,7 +65,7 @@ export class MyApp {
 var providers = [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
-  OAuthService,
+  AuthenticationService,
   GuidedWorkoutService,
   InMemoryMockDataService,
   BackendServiceBase,
