@@ -47,7 +47,7 @@ export class MyApp {
 
   public login(): void {
     this.authenticationService.login().then(() => {
-      this.workoutServiceClient.getKatToken().then(() => {
+      this.authenticationService.getKatToken().then(() => {
         window.alert("login successful!");
       });
     });

@@ -9,7 +9,6 @@ interface MyEvent extends Event {
 
 @Injectable()
 export class WorkoutServiceClient {
-    private getKatTokenApi = "api/Authorization/getkattoken";
     private queryWorkoutApi = "api/workout";
 
     constructor(private httpServiceBase: HttpServiceBase,

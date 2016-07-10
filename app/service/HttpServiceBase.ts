@@ -117,8 +117,6 @@ export class HttpServiceBase {
         var kattoken = User.KATToken;
         var msatoken = User.MSAToken;
 
-        window.alert(User.MSAToken);
-
         if (msatoken != undefined || msatoken != null) {
             header.append(this.MSAHeaderString, msatoken);
         } else {
