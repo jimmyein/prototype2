@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {HttpServiceBase} from './HttpServiceBase';
 import { User } from "../model/User";
 
 interface InAppBrowserEvent extends Event {
@@ -16,8 +17,8 @@ export class AuthenticationService {
     private responseType = "token";
 
 
-    constructor() {
-       
+    constructor(private httpServiceBase: HttpServiceBase) {
+
         this.user = new User();
     }
 
@@ -58,6 +59,15 @@ export class AuthenticationService {
                 reject("The sign in flow was canceled");
             });
         });
+    }
+
+    public getKatToken(): Promise<Object> {
+        return this.httpServiceBase.apiGet(this.getKatTokenApi,
+            data => {
+                User.KATToken = data;
+            },
+            false
+        );
     }
 
     public logoff() {
