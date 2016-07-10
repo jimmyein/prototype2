@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, RequestMethod, URLSearchParams } from '@angular/http';
+import { User } from "../model/User";
 
 interface MyEvent extends Event {
     url: string;
@@ -27,7 +28,9 @@ export class BackendServiceBase {
             options = new RequestOptions();
         }
 
-        this.appendHeaderCredential(options);
+        let params: URLSearchParams = new URLSearchParams();
+
+        options.headers = this.getRequestedHeader();
         var url = this.fitlistBackendUrl + api;
 
         return new Promise((resolve, reject) => {
@@ -66,7 +69,7 @@ export class BackendServiceBase {
             options = new RequestOptions();
         }
 
-        this.appendHeaderCredential(options);
+        options.headers = this.getRequestedHeader();
         var url = this.fitlistBackendUrl + api;
 
         return new Promise((resolve, reject) => {
@@ -103,27 +106,25 @@ export class BackendServiceBase {
         return baseUrl;
     }
 
-    // default header to call our mobile api
-    private appendHeaderCredential(options: RequestOptions): void {
-
+    public getRequestedHeader(): Headers {
         var header = new Headers();
-        var kattoken = window.localStorage.getItem("KatToken");
-        var msatoken = window.localStorage.getItem("MSA")
         header.append('ZUMO-API-VERSION', '2.0.0');
+        var kattoken = User.KatToken;
+        var msatoken = User.MSAToken;
+
         if (msatoken != undefined || msatoken != null) {
             header.append("acess_token", msatoken);
+        } else {
+            // TODO: Redirect to sign-in page
         }
 
         if (kattoken != undefined || kattoken != null) {
             header.append("katToken", kattoken);
+        } else {
+            // TODO: Redirect to sign-in page
         }
 
-        if (options.headers == undefined || options.headers == null) {
-            options.headers = header;
-        } else {
-            options.headers.append('ZUMO-API-VERSION', '2.0.0');
-            options.headers.append("acess_token", window.localStorage.getItem("MSA"));
-        }
+        return header;
     }
 
 }

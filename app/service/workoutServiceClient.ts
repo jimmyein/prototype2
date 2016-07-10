@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BackendServiceBase} from './backendServiceBase';
 import {GuidedWorkoutService} from './guidedWorkoutService';
+import {User} from "../model/User";
 
 interface MyEvent extends Event {
     url: string;
@@ -19,7 +20,7 @@ export class WorkoutServiceClient {
     public getKatToken(): Promise<Object> {
         return this.backendServiceBase.apiGet(this.getKatTokenApi,
             data => {
-                window.localStorage.setItem("KatToken", data);
+                User.KatToken = data;
             },
             false
         );

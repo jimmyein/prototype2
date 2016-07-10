@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { User } from "../model/User";
 
 interface MyEvent extends Event {
     url: string;
 }
 
 @Injectable()
-export class OAuthService {
+export class AuthenticationService {
     public loginUrl: string;
     public clientID: string;
     public scope: string;
@@ -14,20 +15,18 @@ export class OAuthService {
     public oauthUrl: string;
     public tokenStore: Storage;
     public access_token: string;
+    public user: User;
 
     constructor() {
         this.loginUrl = "https://login.live.com/oauth20_authorize.srf";
         this.redirectUrl = "https://login.live.com/oauth20_desktop.srf";
         // hackathon application ID
         //this.clientID = "1a342a7e-b5cf-450e-9188-4a8970e4af9e";
-        // LiveConnectClientId
-        //this.clientID= "00000000441304D0";
-        // KCloudClientID
         this.clientID = "000000004811DB42";
-        //this.scope = "https://outlook.office.com/mail.read https://outlook.office.com/mail.send";
         this.scope = "service::intkds.dns-cargo.com::MBI_SSL";
         this.responseType = "token";
         this.tokenStore = window.sessionStorage;
+        this.user = new User();
     }
 
     private generateLoginUrl(): string {
@@ -52,10 +51,10 @@ export class OAuthService {
             browserRef.addEventListener("loadstart", (event: MyEvent) => {
                 if ((event.url).indexOf(this.redirectUrl) != -1) {
                     browserRef.removeEventListener("exit", (event) => { });
-                    var parsedResponse = this.parseImplicitResponse(((event.url).split("#")[1]).split("&"));
+                    var parsedResponse = this.parseImplicitResponse(event.url);
 
                     if (parsedResponse) {
-                        window.localStorage.setItem("MSA", parsedResponse["access_token"]);
+                        User.MSAToken = parsedResponse["access_token"];
                         resolve(parsedResponse);
                     } else {
                         reject("Having problem authenticating");
@@ -75,6 +74,10 @@ export class OAuthService {
         //TODO
     }
 
+    public getUser(): User {
+        return this.user;
+    }
+
     private parseQueryString(queryString) {
         var qs = decodeURIComponent(queryString),
             obj = {},
@@ -88,9 +91,9 @@ export class OAuthService {
         return obj;
     }
 
-
-    private parseImplicitResponse(responseParameters: Array<String>): Object {
+    private parseImplicitResponse(url : string): Object {
         var parameterMap = {};
+        var responseParameters = ((url).split("#")[1]).split("&");
         for (var i = 0; i < responseParameters.length; i++) {
             parameterMap[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
         }
@@ -100,4 +103,5 @@ export class OAuthService {
             return null;
         }
     }
+
 }
