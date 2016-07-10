@@ -114,7 +114,7 @@ export class BackendServiceBase {
     public getRequestedHeader(): Headers {
         var header = new Headers();
         header.append(this.ZUMOAPIVERSIONString, this.ZUMOAPIVERSION);
-        var kattoken = User.KatToken;
+        var kattoken = User.KATToken;
         var msatoken = User.MSAToken;
 
         window.alert(User.MSAToken);
