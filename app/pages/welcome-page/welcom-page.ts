@@ -1,3 +1,5 @@
+
+// This page has not been used
 import {Component} from "@angular/core";
 import {NavController} from 'ionic-angular';
 

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Platform, ionicBootstrap, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
-import {LoginPage} from './pages/login-page/login-page';
+import {FTUPage} from './pages/FTU-page/FTU-page';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 
 import {HTTP_PROVIDERS} from '@angular/http';
@@ -35,7 +35,7 @@ export class MyApp {
     if (window.localStorage.getItem("FTUset") == "true") {
       this.rootPage = TabsPage;
     } else {
-      this.rootPage = LoginPage;
+      this.rootPage = FTUPage;
     }
 
     platform.ready().then(() => {

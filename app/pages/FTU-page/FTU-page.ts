@@ -8,7 +8,7 @@ import {Slide} from '../../model/Slide';
 @Component({
     templateUrl: 'build/pages/login-page/login-page.html'
 })
-export class LoginPage {
+export class FTUPage {
     public slides: Slide[];
 
 
