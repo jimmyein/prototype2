@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BackendServiceBase} from './backendServiceBase';
+import {HttpServiceBase} from './HttpServiceBase';
 import {GuidedWorkoutService} from './guidedWorkoutService';
 import {User} from "../model/User";
 
@@ -12,12 +12,12 @@ export class WorkoutServiceClient {
     private getKatTokenApi = "api/Authorization/getkattoken";
     private queryWorkoutApi = "api/workout";
 
-    constructor(private backendServiceBase: BackendServiceBase,
+    constructor(private HttpServiceBase: HttpServiceBase,
         private guidedWorkoutService: GuidedWorkoutService) {
     }
 
     public getKatToken(): Promise<Object> {
-        return this.backendServiceBase.apiGet(this.getKatTokenApi,
+        return this.HttpServiceBase.apiGet(this.getKatTokenApi,
             data => {
                  User.KATToken = data;
             },
@@ -26,10 +26,10 @@ export class WorkoutServiceClient {
     }
 
     public queryWorkout(count : number = 0, pageNumber: number = 1, query: string = ""): Promise<Object> {
-        var queryWorkoutUrl = this.backendServiceBase.urlConstructor(this.queryWorkoutApi, {key: "token", value: false},
+        var queryWorkoutUrl = this.HttpServiceBase.urlConstructor(this.queryWorkoutApi, {key: "token", value: false},
         { key: "count", value: count }, { key: "pageNumber", value: pageNumber });
 
-        return this.backendServiceBase.apiGet(queryWorkoutUrl,
+        return this.HttpServiceBase.apiGet(queryWorkoutUrl,
             data => {
                 this.guidedWorkoutService.setGuidedWokrouts(data);
             },

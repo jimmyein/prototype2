@@ -7,7 +7,7 @@ interface MyEvent extends Event {
 }
 
 @Injectable()
-export class BackendServiceBase {
+export class HttpServiceBase {
     private fitlistBackendUrl: string = "http://fitlist.azurewebsites.net/";
     private MSAHeaderString: string = "acessToken";
     private KATHeaderString: string = "katToken";

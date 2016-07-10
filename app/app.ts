@@ -9,7 +9,7 @@ import {HTTP_PROVIDERS} from '@angular/http';
 import {ROUTER_PROVIDERS} from '@angular/router';
 import {AuthenticationService} from './service/authenticationService';
 import {InMemoryMockDataService} from './mockData/mockData';
-import {BackendServiceBase} from './service/backendServiceBase';
+import {HttpServiceBase} from './service/HttpServiceBase';
 import {WorkoutServiceClient} from './service/workoutServiceClient';
 import {GuidedWorkoutService} from './service/guidedWorkoutService';
 
@@ -68,7 +68,7 @@ var providers = [
   AuthenticationService,
   GuidedWorkoutService,
   InMemoryMockDataService,
-  BackendServiceBase,
+  HttpServiceBase,
   WorkoutServiceClient
 ];
 
