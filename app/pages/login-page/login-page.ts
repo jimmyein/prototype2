@@ -1,9 +1,9 @@
 import {Component} from "@angular/core";
 import {NavController} from 'ionic-angular';
-import {AuthenticationService} from '../../service/AuthenticationService';
+import {OAuthService} from '../../service/oauthService';
 import {TabsPage} from '../tabs/tabs';
-import {InMemoryMockDataService} from '../../mockData/InMemoryMockDataService';
-import {Slide} from '../../model/Slide';
+import {InMemoryMockDataService} from '../../mockData/mockData';
+import {Slide} from '../../model/models';
 
 @Component({
     templateUrl: 'build/pages/login-page/login-page.html'
@@ -14,7 +14,7 @@ export class LoginPage {
 
     constructor(
         private _navController: NavController,
-        private authenticationService: AuthenticationService,
+        private oAuthService: OAuthService,
         private inMemoryMockDataService: InMemoryMockDataService) {
         this.slides = this.inMemoryMockDataService.slides;
     }

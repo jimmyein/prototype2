@@ -7,11 +7,11 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 
 import {HTTP_PROVIDERS} from '@angular/http';
 import {ROUTER_PROVIDERS} from '@angular/router';
-import {AuthenticationService} from './service/authenticationService';
+import {OAuthService} from './service/oauthService';
+import {InMemoryMockDataService} from './mockData/mockData';
 import {BackendServiceBase} from './service/backendServiceBase';
 import {WorkoutServiceClient} from './service/workoutServiceClient';
 import {GuidedWorkoutService} from './service/guidedWorkoutService';
-// import {InMemoryMockDataService} from "./mockData/InMemoryMockDataService";
 
 
 @Component({
@@ -23,7 +23,7 @@ export class MyApp {
 
   constructor(private platform: Platform,
     private menu: MenuController,
-    private authenticationService: AuthenticationService,
+    private oauthService: OAuthService,
     private workoutServiceClient: WorkoutServiceClient,
     private guidedWorkoutService: GuidedWorkoutService) {
 
@@ -32,7 +32,7 @@ export class MyApp {
     // TODO: Verify the token
     // if token not exsist
     // TODO:if expired go refrsh token
-    if (window.localStorage.getItem("FTU") == "true") {
+    if (window.localStorage.getItem("FTUset") == "true") {
       this.rootPage = TabsPage;
     } else {
       this.rootPage = LoginPage;
@@ -46,7 +46,7 @@ export class MyApp {
   }
 
   public login(): void {
-    this.authenticationService.login().then(() => {
+    this.oauthService.login().then(() => {
       this.workoutServiceClient.getKatToken().then(() => {
         window.alert("login successful!");
       });
@@ -56,13 +56,18 @@ export class MyApp {
   public logout(): void {
 
   }
+
+
 }
+
+
 
 var providers = [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
-  AuthenticationService,
+  OAuthService,
   GuidedWorkoutService,
+  InMemoryMockDataService,
   BackendServiceBase,
   WorkoutServiceClient
 ];

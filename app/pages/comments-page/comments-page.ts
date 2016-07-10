@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Loading, NavController} from 'ionic-angular';
-import {Comment} from '../../model/Comment';
-import {InMemoryMockDataService} from '../../mockData/InMemoryMockDataService';
+import {Comment} from '../../model/models';
+import {InMemoryMockDataService} from '../../mockData/mockData';
 
 @Component({
   templateUrl: 'build/pages/comments-page/comments-page.html'

@@ -1,3 +1,6 @@
+
+// Use Microsoft dashboard to grant acess to the guided workout
+// Later we need to host our own endpoint/service to guided workouts
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import { ExerciseSearchResultDTO} from '../model/guidedWorkouts';
