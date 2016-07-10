@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, Toast} from 'ionic-angular';
 import {DetailPage} from '../detail-page/detail-page';
 import {WorkoutServiceClient} from '../../service/workoutServiceClient';
-import {WorkoutDto, QueryDto, OrderBy} from '../../model/guidedWorkouts';
+import {WorkoutDto, QueryDto, OrderBy} from '../../model/Workouts';
 import {GuidedWorkoutService} from '../../service/guidedWorkoutService';
 
 

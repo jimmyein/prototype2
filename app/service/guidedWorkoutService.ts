@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
-import { ExerciseSearchResultDTO} from '../model/guidedWorkouts';
+import { ExerciseSearchResultDTO} from '../model/Workouts';
 
 interface MyEvent extends Event {
     url: string;

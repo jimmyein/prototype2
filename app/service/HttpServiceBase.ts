@@ -9,7 +9,7 @@ interface MyEvent extends Event {
 @Injectable()
 export class HttpServiceBase {
     private fitlistBackendUrl: string = "http://fitlist.azurewebsites.net/";
-    private MSAHeaderString: string = "acessToken";
+    private MSAHeaderString: string = "accessToken";
     private KATHeaderString: string = "katToken";
     private ZUMOAPIVERSION: string = "2.0.0";
     private ZUMOAPIVERSIONString: string = 'ZUMO-API-VERSION';
@@ -110,7 +110,6 @@ export class HttpServiceBase {
         return baseUrl;
     }
 
-    // default header to call our mobile api
     public getRequestedHeader(): Headers {
         var header = new Headers();
         header.append(this.ZUMOAPIVERSIONString, this.ZUMOAPIVERSION);

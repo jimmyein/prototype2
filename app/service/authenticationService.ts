@@ -66,7 +66,7 @@ export class AuthenticationService {
             data => {
                 User.KATToken = data;
             },
-            false
+            true
         );
     }
 

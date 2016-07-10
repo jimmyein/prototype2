@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Platform} from 'ionic-angular';
 import {NavController, NavParams} from 'ionic-angular';
-import {WorkoutDto, QueryDto, OrderBy, DifficultyLevels} from '../../model/guidedWorkouts';
+import {WorkoutDto, QueryDto, OrderBy, DifficultyLevels} from '../../model/Workouts';
 import {GuidedWorkoutService} from '../../service/guidedWorkoutService'
 
 @Component({

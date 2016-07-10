@@ -9,7 +9,7 @@ interface MyEvent extends Event {
 
 @Injectable()
 export class WorkoutServiceClient {
-    private queryWorkoutApi = "api/workout";
+    private queryWorkoutApi = "api/workout/queryWorkout";
 
     constructor(private httpServiceBase: HttpServiceBase,
         private guidedWorkoutService: GuidedWorkoutService) {
