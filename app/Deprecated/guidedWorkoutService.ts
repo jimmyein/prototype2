@@ -3,7 +3,7 @@
 // Later we need to host our own endpoint/service to guided workouts
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
-import {WorkoutDto, QueryDto, OrderBy} from '../model/guidedWorkouts';
+import {WorkoutDto, QueryDto, OrderBy} from '../model/Workouts';
 
 interface MyEvent extends Event {
     url: string;

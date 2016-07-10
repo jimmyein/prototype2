@@ -6,7 +6,7 @@ import {InMemoryMockDataService} from '../../mockData/mockData';
 import {Slide} from '../../model/Slide';
 
 @Component({
-    templateUrl: 'build/pages/login-page/login-page.html'
+    templateUrl: 'build/pages/FTU-page/FTU-page.html'
 })
 export class FTUPage {
     public slides: Slide[];
