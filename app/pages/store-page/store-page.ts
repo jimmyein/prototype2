@@ -3,20 +3,21 @@ import {NavController, Toast} from 'ionic-angular';
 import {DetailPage} from '../detail-page/detail-page';
 import {WorkoutServiceClient} from '../../service/workoutServiceClient';
 import {WorkoutDto, QueryDto, OrderBy} from '../../model/Workouts';
-import {GuidedWorkoutService} from '../../service/guidedWorkoutService';
+import {WorkoutConstants} from '../../Constants/WorkoutConstants';
 
 
 @Component({
   templateUrl: 'build/pages/store-page/store-page.html'
 })
 export class StorePage {
-  public menuCurrentSelect: string = "Genre";
-  public DifficultyLevels: string[] = ["Beginner", "Intermediate", "Advanced"];
+  public menuCurrentSelect: string = "DifficultyLevels";
+  public DifficultyLevels: string[] = WorkoutConstants.DifficultyLevels;
+  public FocusOptions: string[] = WorkoutConstants.FocusOptions;
+  public BodyPartsOptions: string[] = WorkoutConstants.BodyPartsOptions;
+  public WorkoutTypeOptions: string[] = WorkoutConstants.WorkoutTypeOptions;
 
   constructor(private navController: NavController,
-    private workoutServiceClient: WorkoutServiceClient,
-    private guidedWorkoutService: GuidedWorkoutService) {
-    this.workoutServiceClient.queryWorkout();
+    private workoutServiceClient: WorkoutServiceClient) {
   }
 
   goToDetailPage(filter: string, value: string) {

@@ -134,10 +134,23 @@
 	margin-left: 20px;
 }
 
-.genre-img {
+.type-img {
 	width: 100%;
 	border-radius: 5px;
 	margin-top: 10px;
+}
+
+.type-container {
+	position: relative;
+}
+
+.type-text {
+	position: absolute;
+	color: white;
+	font-size: 20px;
+	top: 70%;
+	left: 50%;
+  	transform: translateX(-50%);
 }
 
 

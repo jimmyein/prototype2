@@ -15,9 +15,9 @@ export class WorkoutServiceClient {
         private guidedWorkoutService: GuidedWorkoutService) {
     }
 
-    public queryWorkout(count : number = 0, pageNumber: number = 1, query: string = ""): Promise<Object> {
+    public queryWorkout(count?: number, pageNumber?: number, queryFilter?: string, queryValue?: string): Promise<Object> {
         var queryWorkoutUrl = this.httpServiceBase.urlConstructor(this.queryWorkoutApi, {key: "token", value: false},
-        { key: "count", value: count }, { key: "pageNumber", value: pageNumber });
+        { key: "count", value: count }, { key: "pageNumber", value: pageNumber }, {key: queryFilter, value: queryValue});
 
         return this.httpServiceBase.apiGet(queryWorkoutUrl,
             data => {

@@ -6,6 +6,34 @@ interface MyEvent extends Event {
     url: string;
 }
 
+export interface IApiGetRequset {
+    api: string;
+    next: (data) => void;
+    jsonResponse: boolean;
+    error?: (err) => void;
+    complete?: () => void;
+    resolveMessage?: string;
+    rejectMessage?: string;
+    options?: RequestOptions;
+    map?: (response) => void;
+}
+
+export class ApiGetRequest implements IApiGetRequset {
+    api: string;
+    next: (data) => void;
+    jsonResponse: boolean;
+    error: (err) => void;
+    complete: () => void;
+    resolveMessage: string;
+    rejectMessage: string;
+    options: RequestOptions;
+    map: (response) => void;
+
+    constructor(params: IApiGetRequset) {
+        
+    }
+}
+
 @Injectable()
 export class HttpServiceBase {
     private fitlistBackendUrl: string = "http://fitlist.azurewebsites.net/";
@@ -15,8 +43,8 @@ export class HttpServiceBase {
     private ZUMOAPIVERSIONString: string = 'ZUMO-API-VERSION';
 
     constructor(private http: Http) {
-
     }
+
 
     public apiGet(api: string,
         next: (data) => void,
