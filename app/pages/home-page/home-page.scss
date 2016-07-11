@@ -7,6 +7,23 @@
     background-color: #1c1c1f;
 }
 
+.homePage .card {
+    background-color: #1c1c1c;
+}
+
+.homePage h1,
+.homePage h2,
+.homePage h3,
+.homePage div,
+.homePage span{
+    color: white;
+}
+
+.homePage p {
+    color: lightgray;
+}
+
+
 .chartRadar { 
     display: block;
 }
@@ -28,7 +45,7 @@
 .wrapper .speedometer .speedometerMask {
   width: 280px;
   height: 140px;
-  background: #1c1c1f;
+  background-color: #1c1c1c;
   border-radius: 200px 200px 0 0;
   position: absolute;
   left: 10px;
@@ -117,7 +134,8 @@
 }
 
 .myWorkoutList {
-    height: 120px;
+    height: 200px;
+    overflow-y: scroll;
     background-color:#1c1c1f;
     color: white;
 }
@@ -129,4 +147,80 @@
 .myWorkoutList .myWorkoutListItem {
     background-color:#1c1c1f;
     color: white;
+}
+
+
+.demo {
+
+    .descriptionContainer {
+        padding-top: 20px;
+        display: inline-block;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+    }
+
+    .descriptionText {
+        position: relative;
+        margin-top: 20px;
+        background-color: #1c1c1c;
+    }
+
+    .chart {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        background-color: #1c1c1c;
+    }
+
+    .chartText {
+        position: relative;
+        color: white;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 50px;
+    }
+
+    svg {
+        transform: rotate(-90deg);
+    }
+
+    .circle_animation {
+        stroke-dasharray: 440;
+        stroke-dashoffset: 440;
+    }
+
+    .activity .circle_animation {
+        -webkit-animation: activity 1s ease-out forwards;
+        animation: activity 1s ease-out forwards;
+    }
+
+    .sleep .circle_animation {
+        -webkit-animation: sleep 1s ease-out forwards;
+        animation: sleep 1s ease-out forwards;
+    }
+
+    @-webkit-keyframes activity {
+        to {
+            stroke-dashoffset: 80;
+        }
+    }
+
+    @keyframes activity {
+        to {
+            stroke-dashoffset: 80;
+        }
+    }
+
+    @-webkit-keyframes sleep {
+        to {
+            stroke-dashoffset: 160;
+        }
+    }
+
+    @keyframes sleep {
+        to {
+            stroke-dashoffset: 160;
+        }
+    }
 }

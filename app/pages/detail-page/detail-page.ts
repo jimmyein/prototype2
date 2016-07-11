@@ -6,6 +6,7 @@ import {GuidedWorkoutService} from '../../service/guidedWorkoutService';
 import {WorkoutServiceClient} from '../../service/workoutServiceClient';
 import {ExerciseSearchResultDTO} from '../../model/ExerciseSearchResultDTO';
 import {FitnessSearchResultSchema} from '../../model/FitnessSearchResultSchema';
+import {workoutDetailPage} from '../workoutDetail-page/workoutDetail-page';
 
 @Component({
   templateUrl: 'build/pages/detail-page/detail-page.html'
@@ -17,7 +18,8 @@ export class DetailPage {
   private loading: Loading;
   public workoutPlans: FitnessSearchResultSchema[];
 
-  constructor(private navController: NavController,
+  constructor(
+    private navController: NavController,
     platform: Platform,
     navParams: NavParams,
     private guidedWorkoutService: GuidedWorkoutService,
@@ -27,11 +29,9 @@ export class DetailPage {
 
     this.presentLoading();
     this.getWorkoutPlans().then((response) => {
-      this.loading.dismiss()
+      this.loading.dismiss();
+      this.workoutPlans = this.guidedWorkoutService.getWokroutPlans().results;
     });
-
-    this.workoutPlans = this.guidedWorkoutService.getWokroutPlans().results;
-
   }
 
   presentLoading() {
@@ -68,5 +68,10 @@ export class DetailPage {
 
   goBack() {
     this.navController.pop();
+  }
+
+  public goToDetail(workoutPlan: FitnessSearchResultSchema) {
+    this.navController.push(workoutDetailPage,
+      { workoutPlan: workoutPlan });
   }
 }

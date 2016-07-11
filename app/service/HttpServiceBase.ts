@@ -30,7 +30,7 @@ export class ApiGetRequest implements IApiGetRequset {
     map: (response) => void;
 
     constructor(params: IApiGetRequset) {
-        
+
     }
 }
 
@@ -128,10 +128,12 @@ export class HttpServiceBase {
 
     public urlConstructor(baseUrl: string, ...params: { key: string; value: any }[]) {
         params.forEach(param => {
-            if (baseUrl.indexOf("?") != -1) {
-                baseUrl += "&" + param.key + "=" + param.value;
-            } else {
-                baseUrl += "?" + param.key + "=" + param.value;
+            if (param.value != undefined || param.value != null) {
+                if (baseUrl.indexOf("?") != -1) {
+                    baseUrl += "&" + param.key + "=" + param.value;
+                } else {
+                    baseUrl += "?" + param.key + "=" + param.value;
+                }
             }
         });
 
