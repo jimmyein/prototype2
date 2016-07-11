@@ -9,19 +9,43 @@ interface MyEvent extends Event {
 
 @Injectable()
 export class WorkoutServiceClient {
-    private queryWorkoutApi = "api/workout/queryWorkout";
+    private getExercisesAPIBase = "api/workout/GetExercises";
+    private searchWorkoutPlansAPIBase = "api/workout/SearchWorkoutPlans";
 
     constructor(private httpServiceBase: HttpServiceBase,
         private guidedWorkoutService: GuidedWorkoutService) {
     }
 
-    public queryWorkout(count?: number, pageNumber?: number, queryFilter?: string, queryValue?: string): Promise<Object> {
-        var queryWorkoutUrl = this.httpServiceBase.urlConstructor(this.queryWorkoutApi, {key: "token", value: false},
-        { key: "count", value: count }, { key: "pageNumber", value: pageNumber }, {key: queryFilter, value: queryValue});
+    public searchWorkoutPlans(
+        search?: string,
+        filter?: string,
+        count?: number,
+        thumbnailHeight?: number,
+        thumbnailWidth?: number) {
 
-        return this.httpServiceBase.apiGet(queryWorkoutUrl,
+        var searchWorkoutPlansAPIUrl = this.httpServiceBase.urlConstructor(
+            this.searchWorkoutPlansAPIBase,
+            { key: "search", value: search },
+            { key: "filter", value: filter },
+            { key: "count", value: count },
+            { key: "thumbnailHeight", value: thumbnailHeight },
+            { key: "thumbnailWidth", value: thumbnailWidth });
+
+        return this.httpServiceBase.apiGet(searchWorkoutPlansAPIUrl,
             data => {
-                this.guidedWorkoutService.setGuidedWokrouts(data);
+                this.guidedWorkoutService.setWorkoutPlans(data);
+            },
+            true
+        );
+    }
+
+    public getExercises(count?: number, pageNumber?: number, queryFilter?: string, queryValue?: string): Promise<Object> {
+        var getExercisesAPIUrl = this.httpServiceBase.urlConstructor(this.getExercisesAPIBase, { key: "token", value: false },
+            { key: "count", value: count }, { key: "pageNumber", value: pageNumber }, { key: queryFilter, value: queryValue });
+
+        return this.httpServiceBase.apiGet(getExercisesAPIUrl,
+            data => {
+                this.guidedWorkoutService.setExercises(data);
             },
             true
         );

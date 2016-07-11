@@ -10,9 +10,9 @@
 <ion-content style="background-color: #1c1c1f !important">
   <ion-grid>
     <ion-row wrap>
-      <ion-col width-50 *ngFor="let workout of workouts">
-        <img class="genre-img" [src]="workout.image">
-        <div style="color: white">{{workout.Name}}</div>
+      <ion-col width-50 *ngFor="let workout of workoutPlans">
+        <img class="workout-img" [src]="workout.image">
+        <div style="color: white">{{workout.name}}</div>
       </ion-col>
     </ion-row>
   </ion-grid>

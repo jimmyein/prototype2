@@ -1,18 +1,18 @@
 import {ExerciseVideo} from './ExerciseVideo';
 
 export class ExerciseSearchResultDTO {
-      Id: string;
-      Name: string;
-      BodyParts: string[];
+      id: string;
+      name: string;
+      bodyParts: string[];
       image: string;
-      Level: string;
-      Type: string;
-      Category: string;
-      Equipment: string[];
-      Focus: string[];
-      LogDistance: boolean;
-      LogGPSDistance: boolean;
-      LogPedometerDistance: boolean;
-      KShowInTool: boolean;
-      Videos: ExerciseVideo[];
+      level: string;
+      type: string;
+      category: string;
+      equipment: string[];
+      focus: string[];
+      logDistance: boolean;
+      logGPSDistance: boolean;
+      logPedometerDistance: boolean;
+      kShowInTool: boolean;
+      videos: ExerciseVideo[];
 }

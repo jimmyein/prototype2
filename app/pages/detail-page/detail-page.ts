@@ -5,6 +5,7 @@ import {WorkoutDto, QueryDto, OrderBy, DifficultyLevels} from '../../model/Worko
 import {GuidedWorkoutService} from '../../service/guidedWorkoutService';
 import {WorkoutServiceClient} from '../../service/workoutServiceClient';
 import {ExerciseSearchResultDTO} from '../../model/ExerciseSearchResultDTO';
+import {FitnessSearchResultSchema} from '../../model/FitnessSearchResultSchema';
 
 @Component({
   templateUrl: 'build/pages/detail-page/detail-page.html'
@@ -14,7 +15,7 @@ export class DetailPage {
   private filter: string;
   private value: string;
   private loading: Loading;
-  public workouts: ExerciseSearchResultDTO[];
+  public workoutPlans: FitnessSearchResultSchema[];
 
   constructor(private navController: NavController,
     platform: Platform,
@@ -25,14 +26,12 @@ export class DetailPage {
     this.value = navParams.get("value");
 
     this.presentLoading();
-    this.getWorkout().then((response) => {
+    this.getWorkoutPlans().then((response) => {
       this.loading.dismiss()
     });
-    
-    this.workouts = this.guidedWorkoutService.getGuidedWorkouts();
 
-    if (this.workouts == null || this.workouts == undefined) {
-    }
+    this.workoutPlans = this.guidedWorkoutService.getWokroutPlans().results;
+
   }
 
   presentLoading() {
@@ -44,22 +43,26 @@ export class DetailPage {
     this.navController.present(this.loading);
   }
 
-  private getWorkout(): Promise<Object> {
+  private getWorkoutPlans(): Promise<Object> {
+    return this.workoutServiceClient.searchWorkoutPlans();
+  }
+
+  private getExercises(): Promise<Object> {
     switch (this.filter) {
       case "DifficultyLevels":
-        return this.workoutServiceClient.queryWorkout(0, 1, "level", this.value);
+        return this.workoutServiceClient.getExercises(0, 1, "level", this.value);
 
       case "FocusOptions":
-        return this.workoutServiceClient.queryWorkout(0, 1, "focus", this.value);
+        return this.workoutServiceClient.getExercises(0, 1, "focus", this.value);
 
       case "BodyPartsOptions":
-        return this.workoutServiceClient.queryWorkout(0, 1, "level", this.value);
+        return this.workoutServiceClient.getExercises(0, 1, "level", this.value);
 
       case "WorkoutTypeOptions":
-        return this.workoutServiceClient.queryWorkout(0, 1, "bodyParts", this.value);
+        return this.workoutServiceClient.getExercises(0, 1, "bodyParts", this.value);
 
       default:
-        return this.workoutServiceClient.queryWorkout();
+        return this.workoutServiceClient.getExercises();
     }
   }
 
