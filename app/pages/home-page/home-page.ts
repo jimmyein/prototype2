@@ -8,15 +8,11 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
   directives: [CHART_DIRECTIVES, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class HomePage {
-  public doughnutChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+  public doughnutChartLabels: string[] = ['Sleep', 'Activity', 'Diet'];
   public doughnutChartData: number[] = [350, 450, 100];
   public doughnutChartType: string = 'doughnut';
   public radarChartLabels: string[] = ['Eating', 'Drinking', 'Sleeping', 'Hiking', 'Coding', 'Biking', 'Running'];
   public radarChartType: string = 'radar';
-  public polarAreaChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
-  public polarAreaChartData: number[] = [300, 500, 100, 40, 120];
-  public polarAreaLegend: boolean = true;
-  public polarAreaChartType: string = 'polarArea';
   public radarChartData: any = [
     { data: [65, 59, 90, 81, 56, 55, 40], label: 'Series A' }
   ];
