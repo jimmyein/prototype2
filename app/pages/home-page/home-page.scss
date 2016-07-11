@@ -3,6 +3,10 @@
     display: block; 
 }
 
+.chartDemo {
+    height: 300px;
+}
+
 .homePage {
     background-color: #1c1c1f;
 }
@@ -187,7 +191,7 @@
 
     .circle_animation {
         stroke-dasharray: 340;
-        stroke-dashoffset: 440;
+        stroke-dashoffset: 340;
     }
 
     .activity .circle_animation {

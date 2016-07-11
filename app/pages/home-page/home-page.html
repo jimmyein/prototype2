@@ -6,6 +6,39 @@
 </ion-navbar>
 
 <ion-content padding class="homePage">
+
+  <h1>Demo</h1>
+  <ion-card class="demo card">
+    <div>
+      <div class="chart activity">
+        <div class="chartText">50 hours</div>
+        <svg width="140" height="140">
+          <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#6fdb6f" fill="none" />
+        </svg>
+      </div>
+      <div class="descriptionContainer">
+        <h1>Your activity</h1>
+        <div class="descriptionText">
+          For a better picture of your daily activity, grab your Band and start moving!
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="chart sleep">
+      <div class="chartText">41.5 hours</div>
+      <svg width="140" height="140">
+        <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#69aff4" fill="none" />
+      </svg>
+    </div>
+
+    <div class="descriptionContainer">
+      <h1>Your sleep</h1>
+      <div class="descriptionText">
+        Wear your Band to bed and get a deeper look at how sleep affects your overall health.
+      </div>
+    </div>
+  </ion-card>
+
   <h1>Workout</h1>
   <ion-card class="card myWorkoutList">
     <ion-list>
@@ -93,46 +126,20 @@
       </ion-col>
     </ion-row>
   </ion-card>
-  
- <h1>Demo</h1>
-  <ion-card class="demo card">
-    <div>
-      <div class="chart activity">
-        <div class="chartText">50 hours</div>
-        <svg width="140" height="140">
-          <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#6fdb6f" fill="none" />
-        </svg>
-      </div>
-      <div class="descriptionContainer">
-        <h1>Your activity</h1>
-        <div class="descriptionText">
-          For a better picture of your daily activity, grab your Band and start moving!
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="chart sleep">
-      <div class="chartText">41.5 hours</div>
-      <svg width="140" height="140">
-        <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#69aff4" fill="none" />
-      </svg>
-    </div>
 
-    <div class="descriptionContainer">
-      <h1>Your sleep</h1>
-      <div class="descriptionText">
-        Wear your Band to bed and get a deeper look at how sleep affects your overall health.
-      </div>
-    </div>
+  <ion-card class="card chartDemo">
+    <base-chart class="chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)"></base-chart>
   </ion-card>
 
+  <ion-card class="card chartDemo">
+    <base-chart class="radarChart" [colors]="radarChartColours" [legend]="false" class="chartRadar" [datasets]="radarChartData"
+      [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></base-chart>
+  </ion-card>
 
-  <!--<base-chart class="chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
-    (chartClick)="chartClicked($event)"></base-chart>-->
+  <ion-card class="card chartDemo">
+    <base-chart class="chart" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType"
+      (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></base-chart>
+  </ion-card>
 
-  <!--<base-chart class="radarChart" [colors]="radarChartColours" [legend]="false" class="chartRadar" [datasets]="radarChartData"
-    [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></base-chart>-->
-
-  <!--<base-chart class="chart" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType"
-    (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></base-chart>-->
 </ion-content>
