@@ -156,7 +156,7 @@
         padding-top: 20px;
         display: inline-block;
         position: absolute;
-        width: 200px;
+        width: 150px;
         height: 200px;
     }
 
@@ -168,7 +168,7 @@
 
     .chart {
         display: inline-block;
-        width: 200px;
+        width: 150px;
         height: 200px;
         background-color: #1c1c1c;
     }
@@ -176,9 +176,9 @@
     .chartText {
         position: relative;
         color: white;
-        top: 50%;
+        top: 43%;
         transform: translateY(-50%);
-        left: 50px;
+        left: 43px;
     }
 
     svg {
@@ -186,7 +186,7 @@
     }
 
     .circle_animation {
-        stroke-dasharray: 440;
+        stroke-dasharray: 340;
         stroke-dashoffset: 440;
     }
 
