@@ -23,15 +23,15 @@ export class MyApp {
 
   constructor(private platform: Platform,
     private menu: MenuController,
+    private httpServiceBase: HttpServiceBase,
     private authenticationService: AuthenticationService,
     private workoutServiceClient: WorkoutServiceClient,
-    private guidedWorkoutService: GuidedWorkoutService) {
+    private guidedWorkoutService: GuidedWorkoutService
+  ) {
 
     var storage = window.localStorage;
     menu.enable(true);
-    // TODO: Verify the token
-    // if token not exsist
-    // TODO:if expired go refrsh token
+
     if (window.localStorage.getItem("FTUset") == "true") {
       this.rootPage = TabsPage;
     } else {
@@ -64,10 +64,10 @@ export class MyApp {
 var providers = [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
+  HttpServiceBase,
   AuthenticationService,
   GuidedWorkoutService,
   InMemoryMockDataService,
-  HttpServiceBase,
   WorkoutServiceClient
 ];
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from "../model/User";
+// import { HttpServiceBase } from './HttpServiceBase';
 import { Http, Response, Headers, RequestOptions, RequestMethod, URLSearchParams } from '@angular/http';
-import { HttpServiceBase } from './HttpServiceBase';
 
 @Injectable()
 export class UserService {
@@ -12,7 +12,7 @@ export class UserService {
 
     public getEvent() {
         var baseUrl =
-            HttpServiceBase.urlConstructor(this.getEventUrl,
+            this.urlConstructor(this.getEventUrl,
                 { key: "access_token", value: User.MSAServiceToken });
         window.alert(baseUrl);
         this.http.get(baseUrl)
@@ -28,7 +28,17 @@ export class UserService {
             );
     }
 
-    public test() {
-        window.alert("test");
+     public urlConstructor(baseUrl: string, ...params: { key: string; value: any }[]) {
+        params.forEach(param => {
+            if (param.value != undefined || param.value != null) {
+                if (baseUrl.indexOf("?") != -1) {
+                    baseUrl += "&" + param.key + "=" + param.value;
+                } else {
+                    baseUrl += "?" + param.key + "=" + param.value;
+                }
+            }
+        });
+
+        return baseUrl;
     }
 }

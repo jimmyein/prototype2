@@ -13,11 +13,6 @@ export class HomePage {
   public doughnutChartLabels: string[] = ['Sleep', 'Activity', 'Diet'];
   public doughnutChartData: number[] = [350, 450, 100];
   public doughnutChartType: string = 'doughnut';
-  public radarChartLabels: string[] = ['Eating', 'Drinking', 'Sleeping', 'Hiking', 'Coding', 'Biking', 'Running'];
-  public radarChartType: string = 'radar';
-  public radarChartData: any = [
-    { data: [65, 59, 90, 81, 56, 55, 40], label: 'Series A' }
-  ];
 
   public lineChartData: Array<any> = [
     [65, 59, 80, 81, 56, 55, 40],
@@ -34,19 +29,8 @@ export class HomePage {
   public events = null;
   public showDetail = false;
 
-  public radarChartColours: Array<any> = [
-    {
-      backgroundColor: '#1c1c1f',
-      borderColor: '#FF7235',
-      pointBackgroundColor: '#6BA4FF',
-      pointBorderColor: 'transparent',
-      pointHoverBackgroundColor: 'white',
-      pointHoverBorderColor: 'white'
-    }];
-
-
-  constructor(private _navController: NavController,
-    private UserService: UserService) {
+  constructor(private navController: NavController,
+    private userService: UserService) {
   }
 
   // events
@@ -63,6 +47,6 @@ export class HomePage {
   }
 
   public getEvents(): void {
-    this.events = this.UserService.test();
+    this.events = this.userService.getEvent();
   }
 }

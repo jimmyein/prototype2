@@ -6,33 +6,33 @@ interface MyEvent extends Event {
     url: string;
 }
 
-export interface IApiGetRequset {
-    api: string;
-    next: (data) => void;
-    jsonResponse: boolean;
-    error?: (err) => void;
-    complete?: () => void;
-    resolveMessage?: string;
-    rejectMessage?: string;
-    options?: RequestOptions;
-    map?: (response) => void;
-}
+// export interface IApiGetRequset {
+//     api: string;
+//     next: (data) => void;
+//     jsonResponse: boolean;
+//     error?: (err) => void;
+//     complete?: () => void;
+//     resolveMessage?: string;
+//     rejectMessage?: string;
+//     options?: RequestOptions;
+//     map?: (response) => void;
+// }
 
-export class ApiGetRequest implements IApiGetRequset {
-    api: string;
-    next: (data) => void;
-    jsonResponse: boolean;
-    error: (err) => void;
-    complete: () => void;
-    resolveMessage: string;
-    rejectMessage: string;
-    options: RequestOptions;
-    map: (response) => void;
+// export class ApiGetRequest implements IApiGetRequset {
+//     api: string;
+//     next: (data) => void;
+//     jsonResponse: boolean;
+//     error: (err) => void;
+//     complete: () => void;
+//     resolveMessage: string;
+//     rejectMessage: string;
+//     options: RequestOptions;
+//     map: (response) => void;
 
-    constructor(params: IApiGetRequset) {
+//     constructor(params: IApiGetRequset) {
 
-    }
-}
+//     }
+// }
 
 @Injectable()
 export class HttpServiceBase {
