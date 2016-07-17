@@ -27,8 +27,4 @@ export class UserService {
             }
             );
     }
-
-    public test() {
-        window.alert("test");
-    }
 }

@@ -10,7 +10,6 @@ import {ROUTER_PROVIDERS} from '@angular/router';
 import {AuthenticationService} from './service/authenticationService';
 import {InMemoryMockDataService} from './mockData/mockData';
 import {HttpServiceBase} from './service/HttpServiceBase';
-import {WorkoutServiceClient} from './service/workoutServiceClient';
 import {GuidedWorkoutService} from './service/guidedWorkoutService';
 
 
@@ -24,7 +23,6 @@ export class MyApp {
   constructor(private platform: Platform,
     private menu: MenuController,
     private authenticationService: AuthenticationService,
-    private workoutServiceClient: WorkoutServiceClient,
     private guidedWorkoutService: GuidedWorkoutService) {
 
     var storage = window.localStorage;
@@ -67,8 +65,7 @@ var providers = [
   AuthenticationService,
   GuidedWorkoutService,
   InMemoryMockDataService,
-  HttpServiceBase,
-  WorkoutServiceClient
+  HttpServiceBase
 ];
 
 ionicBootstrap(MyApp, providers)

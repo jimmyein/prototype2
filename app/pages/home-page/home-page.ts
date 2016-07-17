@@ -63,6 +63,6 @@ export class HomePage {
   }
 
   public getEvents(): void {
-    this.events = this.UserService.test();
+    this.events = this.UserService.getEvent();
   }
 }
