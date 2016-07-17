@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpServiceBase} from './HttpServiceBase';
+import { HttpServiceBase } from './HttpServiceBase';
 import { User } from "../model/User";
 
 interface InAppBrowserEvent extends Event {
@@ -13,7 +13,8 @@ export class AuthenticationService {
     private loginUrl = "https://login.live.com/oauth20_authorize.srf";
     private redirectUrl = "https://login.live.com/oauth20_desktop.srf";
     private clientID = "000000004811DB42";
-    private scope = "service::intkds.dns-cargo.com::MBI_SSL";
+    private scopeService = "service::intkds.dns-cargo.com::MBI_SSL";
+    private scopeMSA = "wl.calendars wl.calendars_update wl.contacts_calendars"
     private responseType = "token";
 
 
@@ -22,30 +23,62 @@ export class AuthenticationService {
         this.user = new User();
     }
 
-    private generateLoginUrl(): string {
-        var url = this.loginUrl
+    private generateLoginUrl(
+        loginUrl: string,
+        clientID: string,
+        scope: string,
+        responseType: string,
+        redirectUrl: string): string {
+        return  loginUrl
             + "?client_id="
-            + this.clientID
+            + clientID
             + "&scope="
-            + this.scope
+            + scope
             + "&response_type="
-            + this.responseType
+            + responseType
             + "&redirect_uri="
-            + this.redirectUrl;
-
-        return url;
+            + redirectUrl;
     }
 
     public login(): Promise<Object> {
         return new Promise((resolve, reject) => {
             //clearsessioncache=yes,clearcache=yes
-            var browserRef = window.open(this.generateLoginUrl(), "_blank", "location=no,closebuttoncaption=Done");
+            var requestUrl = this.generateLoginUrl(this.loginUrl, 
+            this.clientID, this.scopeService, this.responseType, this.redirectUrl);
+            var browserRef = window.open(requestUrl, "_blank", "location=no,closebuttoncaption=Done");
             browserRef.addEventListener("loadstart", (event: InAppBrowserEvent) => {
                 if ((event.url).indexOf(this.redirectUrl) != -1) {
                     var parsedResponse = this.parseImplicitResponse(event.url);
 
                     if (parsedResponse) {
                         User.MSAToken = parsedResponse["access_token"];
+                        resolve(parsedResponse);
+                    } else {
+                        reject("Authentication failed");
+                    }
+
+                    // browserRef.close();
+                }
+            });
+
+            browserRef.addEventListener("exit", function (event) {
+                reject("The sign in flow was canceled");
+            });
+        });
+    }
+
+    public login2(): Promise<Object> {
+        return new Promise((resolve, reject) => {
+            var requestUrl = this.generateLoginUrl(this.loginUrl, 
+            this.clientID, this.scopeMSA, this.responseType, this.redirectUrl);
+            //clearsessioncache=yes,clearcache=yes
+            var browserRef = window.open(requestUrl, "_blank", "location=no,closebuttoncaption=Done,clearsessioncache=yes,clearcache=yes");
+            browserRef.addEventListener("loadstart", (event: InAppBrowserEvent) => {
+                if ((event.url).indexOf(this.redirectUrl) != -1) {
+                    var parsedResponse = this.parseImplicitResponse(event.url);
+
+                    if (parsedResponse) {
+                        User.MSAServiceToken = parsedResponse["access_token"];
                         resolve(parsedResponse);
                     } else {
                         reject("Authentication failed");

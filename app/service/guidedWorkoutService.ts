@@ -1,7 +1,6 @@
-
 import { Injectable } from '@angular/core';
 import { ExerciseSearchResultDTO} from '../model/ExerciseSearchResultDTO';
-import {FitnessResultCluster} from '../model/FitnessResultCluster';
+import { FitnessResultCluster } from '../model/FitnessResultCluster';
 
 interface MyEvent extends Event {
     url: string;
@@ -9,10 +8,12 @@ interface MyEvent extends Event {
 
 @Injectable()
 export class GuidedWorkoutService {
-    private workouts: ExerciseSearchResultDTO[];
+    constructor() {
+    }
 
-    
+    private workouts: ExerciseSearchResultDTO[];
     private _exercises : ExerciseSearchResultDTO[];
+
     public get exercises() : ExerciseSearchResultDTO[] {
         return this._exercises;
     }
@@ -26,10 +27,6 @@ export class GuidedWorkoutService {
     }
     public set workoutPlans(v : FitnessResultCluster) {
         this._workoutPlans = v;
-    }
-    
-
-    constructor() {
     }
 
     public getWokroutPlans(): FitnessResultCluster {

@@ -47,8 +47,11 @@ export class MyApp {
 
   public login(): void {
     this.authenticationService.login().then(() => {
-      this.authenticationService.getKatToken().then(() => {
-        window.alert("login successful!");
+      this.authenticationService.login2().then(() => {
+        this.authenticationService.getKatToken().then(() => {
+          window.alert(window.localStorage.getItem("MSATokenServices"));
+          window.alert("login successful!");
+        });
       });
     });
   }
@@ -56,11 +59,7 @@ export class MyApp {
   public logout(): void {
 
   }
-
-
 }
-
-
 
 var providers = [
   HTTP_PROVIDERS,

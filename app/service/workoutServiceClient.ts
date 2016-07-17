@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpServiceBase} from './HttpServiceBase';
-import {GuidedWorkoutService} from './guidedWorkoutService';
-import {User} from "../model/User";
+import { HttpServiceBase } from './HttpServiceBase';
+import { GuidedWorkoutService } from './guidedWorkoutService';
 
 interface MyEvent extends Event {
     url: string;
@@ -23,7 +22,7 @@ export class WorkoutServiceClient {
         thumbnailHeight?: number,
         thumbnailWidth?: number) {
 
-        var searchWorkoutPlansAPIUrl = this.httpServiceBase.urlConstructor(
+        var searchWorkoutPlansAPIUrl = HttpServiceBase.urlConstructor(
             this.searchWorkoutPlansAPIBase,
             { key: "search", value: search },
             { key: "filter", value: filter },
@@ -40,7 +39,7 @@ export class WorkoutServiceClient {
     }
 
     public getExercises(count?: number, pageNumber?: number, queryFilter?: string, queryValue?: string): Promise<Object> {
-        var getExercisesAPIUrl = this.httpServiceBase.urlConstructor(this.getExercisesAPIBase, { key: "token", value: false },
+        var getExercisesAPIUrl = HttpServiceBase.urlConstructor(this.getExercisesAPIBase, { key: "token", value: false },
             { key: "count", value: count }, { key: "pageNumber", value: pageNumber }, { key: queryFilter, value: queryValue });
 
         return this.httpServiceBase.apiGet(getExercisesAPIUrl,

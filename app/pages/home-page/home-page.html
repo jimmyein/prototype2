@@ -132,9 +132,15 @@
       (chartClick)="chartClicked($event)"></base-chart>
   </ion-card>
 
-  <ion-card class="card chartDemo">
-    <base-chart class="radarChart" [colors]="radarChartColours" [legend]="false" class="chartRadar" [datasets]="radarChartData"
-      [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></base-chart>
-  </ion-card>
+ <ion-card>
+   <button (click)="getEvents()">Get Calendar</button>
+    <div [hidden]="events == null">
+      <ion-list>
+        <ion-item *ngFor="let event of events">
+          <div>{{event.name}}</div>
+        </ion-item>
+      </ion-list>
+    </div>
+ </ion-card>
 
 </ion-content>

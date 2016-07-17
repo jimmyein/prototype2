@@ -126,7 +126,7 @@ export class HttpServiceBase {
         });
     }
 
-    public urlConstructor(baseUrl: string, ...params: { key: string; value: any }[]) {
+    public static urlConstructor(baseUrl: string, ...params: { key: string; value: any }[]) {
         params.forEach(param => {
             if (param.value != undefined || param.value != null) {
                 if (baseUrl.indexOf("?") != -1) {

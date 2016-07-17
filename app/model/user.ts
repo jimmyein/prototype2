@@ -29,6 +29,15 @@ export class User {
         window.localStorage.setItem("MSAToken", value);
     }
 
+    public static get MSAServiceToken(): string {
+        return window.localStorage.getItem("MSAServiceToken");
+    }
+
+    public static set MSAServiceToken(value: string) {
+        window.localStorage.setItem("MSAServiceToken", value);
+    }
+
+
     public static get KATToken(): string {
         return window.localStorage.getItem("KatToken");
     }
