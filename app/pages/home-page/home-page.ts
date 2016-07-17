@@ -47,6 +47,8 @@ export class HomePage {
   }
 
   public getEvents(): void {
-    this.events = this.userService.getEvent();
+    this.userService.getEvent().then(data => {
+      this.events = data;
+    });
   }
 }

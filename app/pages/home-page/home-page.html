@@ -132,12 +132,13 @@
       (chartClick)="chartClicked($event)"></base-chart>
   </ion-card>
 
- <ion-card>
+ <ion-card class="card calendarListContainer">
    <button (click)="getEvents()">Get Calendar</button>
     <div [hidden]="events == null">
       <ion-list>
-        <ion-item *ngFor="let event of events">
-          <div>{{event.name}}</div>
+        <ion-item *ngFor="let event of events" class="calendarListItem">
+          <span>{{event.name}}</span>
+          <span>{{event.start_time}}</span>
         </ion-item>
       </ion-list>
     </div>

@@ -10,25 +10,26 @@ export class UserService {
     constructor(private http: Http) {
     }
 
-    public getEvent() {
-        var baseUrl =
-            this.urlConstructor(this.getEventUrl,
-                { key: "access_token", value: User.MSAServiceToken });
-        window.alert(baseUrl);
-        this.http.get(baseUrl)
-            .map(
-            data => {
-                return data.json();
-            })
-            .subscribe(
-            response => {
-                window.alert(response);
-                return response;
-            }
-            );
+    public getEvent(): Promise<Object> {
+        return new Promise((resolve, reject) => {
+            var baseUrl =
+                this.urlConstructor(this.getEventUrl,
+                    { key: "access_token", value: User.MSAServiceToken });
+            this.http.get(baseUrl)
+                .map(response => {
+                    return response.json().data;
+                })
+                .subscribe(
+                data => {
+                    resolve(data);
+                },
+                err => {
+                    reject("Failed to get calendar. Error:" + err);
+                });
+        })
     }
 
-     public urlConstructor(baseUrl: string, ...params: { key: string; value: any }[]) {
+    public urlConstructor(baseUrl: string, ...params: { key: string; value: any }[]) {
         params.forEach(param => {
             if (param.value != undefined || param.value != null) {
                 if (baseUrl.indexOf("?") != -1) {
