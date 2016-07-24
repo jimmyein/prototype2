@@ -1,9 +1,7 @@
-.workout-img {
-    height: 100px;
-    width: 200px;
-}
 
-.card-background-page {
+
+.workouts {
+    background-color: #303030 !important;
 
   ion-card {
     position: relative;
@@ -27,4 +25,12 @@
     color: #fff;
   }
 
+  .workout-img {
+    height: 100px;
+    width: 200px;
+  }
+
+  .text {
+    color: #ddd;
+  }
 }

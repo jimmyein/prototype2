@@ -11,7 +11,6 @@ import {InMemoryMockDataService} from '../../mockData/mockData';
   templateUrl: 'build/pages/store-page/store-page.html'
 })
 export class StorePage {
-  public menuCurrentSelect: string = "DifficultyLevels";
   public DifficultyLevels: string[] = WorkoutConstants.DifficultyLevels;
   public FocusOptions: string[] = WorkoutConstants.FocusOptions;
   public BodyPartsOptions: string[] = WorkoutConstants.BodyPartsOptions;
@@ -21,13 +20,14 @@ export class StorePage {
     autoplay: 5000,
     speed: 200
   };
-  public filter: string = "DifficultyLevels";;
+  public filter: string;
   public featuredWorkouts;
 
   constructor(private navController: NavController,
     private workoutServiceClient: WorkoutServiceClient,
     private mockData: InMemoryMockDataService) {
       this.featuredWorkouts = mockData.featuredWorkouts;
+      this.filter = "DifficultyLevels";
   }
 
   goToDetailPage(filter: string, value: string) {

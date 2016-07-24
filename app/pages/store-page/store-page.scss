@@ -7,10 +7,14 @@
 		font-weight: bold;
 		border-bottom: 1px solid white;
 		margin-bottom: 10px;
+		margin-top: 10px;
 	}
 
 	.toolBar {
-		background-color: #303030;
+		.toolbar-background {
+			background-color: #303030;
+			background: #303030;
+		}
 	}
 
 	.featuredWorkoutSlideShowContainer {
@@ -52,6 +56,16 @@
 
 .type {
 	position: relative;
+	margin-left: 0;
+	padding-left: 0;
+	margin-right: 0;
+	padding-right: 0;
+	width: 100%;
+
+	.grid {
+		margin: 0;
+		padding: 0;
+	}
 
 	.type-img {
 		width: 100%;

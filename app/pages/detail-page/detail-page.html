@@ -7,19 +7,23 @@
   </ion-title>
 </ion-navbar>
 
-<ion-content class="card-background-page" style="background-color: #1c1c1f !important">
-  <ion-card *ngFor="let workout of workoutPlans">
+<ion-content class="workouts" style="">
+  <!--<ion-card *ngFor="let workout of workoutPlans">
     <img (click)="goToDetail(workout)" [src]="workout.image" />
     <div class="card-title">{{workout.name}}</div>
-  </ion-card>
+  </ion-card>-->
 
 
-  <!--<ion-grid>
+  <ion-grid>
     <ion-row wrap>
       <ion-col width-50 *ngFor="let workout of workoutPlans">
-        <img (click)="goToDetail(workout)" class="workout-img" [src]="workout.image">
-        <div style="color: white">{{workout.name}}</div>
+        <img (click)="goToDetail(workout)" 
+        class="workout-img" 
+        [src]="workout.image">
+        <div class="text">{{workout.name}}</div>
+        <div class="text">{{workout.publishdate}}</div>
+        <div class="text">{{workout.kdisplaysubtype}}</div>
       </ion-col>
     </ion-row>
-  </ion-grid>-->
+  </ion-grid>
 </ion-content>

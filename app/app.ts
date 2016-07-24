@@ -48,7 +48,6 @@ export class MyApp {
     this.authenticationService.login().then(() => {
       this.authenticationService.login2().then(() => {
         this.authenticationService.getKatToken().then(() => {
-          window.alert(window.localStorage.getItem("MSATokenServices"));
           window.alert("login successful!");
         });
       });
