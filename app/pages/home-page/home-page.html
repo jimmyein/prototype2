@@ -5,48 +5,48 @@
   <ion-title>Home</ion-title>
 </ion-navbar>
 
-<ion-content padding class="homePage">
+<ion-content class="homePage">
 
-  <h1>Demo</h1>
-  <ion-card class="demo card">
+  <ion-card class="activity card">
     <div>
       <div class="chart activity">
-        <div class="chartText">50 hours</div>
+        <div class="chartText">{{activity.metric}}</div>
         <svg width="140" height="140">
-          <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#6fdb6f" fill="none" />
+          <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#4CAF50" fill="none" />
         </svg>
       </div>
       <div class="descriptionContainer">
-        <h1>Your activity</h1>
+        <h1>{{activity.title}}</h1>
         <div class="descriptionText">
-          For a better picture of your daily activity, grab your Band and start moving!
+          {{activity.description}}
         </div>
-      </div>
-    </div>
-    <br>
-    <div class="chart sleep">
-      <div class="chartText">41.5 hours</div>
-      <svg width="140" height="140">
-        <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#69aff4" fill="none" />
-      </svg>
-    </div>
-
-    <div class="descriptionContainer">
-      <h1>Your sleep</h1>
-      <div class="descriptionText">
-        Wear your Band to bed and get a deeper look at how sleep affects your overall health.
       </div>
     </div>
   </ion-card>
 
-  <h1>Workout</h1>
-  <ion-card class="card myWorkoutList">
+  <ion-card class="activity card">
+    <div class="chart sleep">
+      <div class="chartText">{{sleep.metric}}</div>
+      <svg width="140" height="140">
+        <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#3F51B5" fill="none" />
+      </svg>
+    </div>
+
+    <div class="descriptionContainer">
+      <h1>{{sleep.title}}</h1>
+      <div class="descriptionText">
+        {{sleep.description}}
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card class="card workoutList">
     <ion-list>
-      <ion-list-header class="myWorkoutListHeader">
+      <ion-list-header class="header">
         Today
       </ion-list-header>
 
-      <ion-item class="myWorkoutListItem">
+      <ion-item class="item">
         <ion-avatar item-left>
           <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcdkc_m4_h400_w600.jpg">
         </ion-avatar>
@@ -74,7 +74,7 @@
     </ion-list>
 
     <ion-list>
-      <ion-list-header class="myWorkoutListHeader">
+      <ion-list-header class="header">
         Last Week
       </ion-list-header>
 
@@ -90,50 +90,49 @@
     </ion-list>
   </ion-card>
 
-  <h1>Status</h1>
   <ion-card class="card">
-    <div class="wrapper">
+    <div class="social">
       <div class="speedometer">
         <div class="speedometerMask"></div>
         <div class="pointer"></div>
       </div>
     </div>
-    <div class="spacer50"></div>
+    <div class="spacer30"></div>
     <ion-row class="panel">
       <ion-col width-25 class="panelData">
         <ion-icon class="panelIcon" name="analytics"></ion-icon>
         <div class="panelTitleText">RUN</div>
-        <div class="panelMetricNumText">0.8</div>
+        <div class="panelMetricNumText">{{socialMetrics.run}}</div>
         <div class="panelMetricUnitText">MILES</div>
       </ion-col>
       <ion-col width-25 class="panelData">
         <ion-icon class="panelIcon" name="bicycle"></ion-icon>
         <div class="panelTitleText">BIKE</div>
-        <div class="panelMetricNumText">4.2</div>
+        <div class="panelMetricNumText">{{socialMetrics.bike}}</div>
         <div class="panelMetricUnitText">MILES</div>
       </ion-col>
       <ion-col width-25 class="panelData">
         <ion-icon class="panelIcon" name="time"></ion-icon>
         <div class="panelTitleText">CARDIO</div>
-        <div class="panelMetricNumText">86</div>
+        <div class="panelMetricNumText">{{socialMetrics.cardio}}</div>
         <div class="panelMetricUnitText">MINS</div>
       </ion-col>
       <ion-col width-25 class="panelData">
         <ion-icon class="panelIcon" name="person"></ion-icon>
         <div class="panelTitleText">STEPS</div>
-        <div class="panelMetricNumText">845</div>
+        <div class="panelMetricNumText">{{socialMetrics.step}}</div>
         <div class="panelMetricUnitText">STEPS</div>
       </ion-col>
     </ion-row>
   </ion-card>
 
-  <ion-card class="card chartDemo">
+  <ion-card class="card chartContainer">
     <base-chart class="chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
       (chartClick)="chartClicked($event)"></base-chart>
   </ion-card>
 
- <ion-card class="card calendarListContainer">
-   <button (click)="getEvents()">Get Calendar</button>
+  <ion-card class="card calendar">
+    <button (click)="getEvents()">Get Calendar</button>
     <div [hidden]="events == null">
       <ion-list>
         <ion-item *ngFor="let event of events" class="calendarListItem">
@@ -142,6 +141,6 @@
         </ion-item>
       </ion-list>
     </div>
- </ion-card>
+  </ion-card>
 
 </ion-content>

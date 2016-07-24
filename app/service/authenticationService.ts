@@ -45,7 +45,7 @@ export class AuthenticationService {
             //clearsessioncache=yes,clearcache=yes
             var requestUrl = this.generateLoginUrl(this.loginUrl, 
             this.clientID, this.scopeService, this.responseType, this.redirectUrl);
-            var browserRef = window.open(requestUrl, "_blank", "location=no,closebuttoncaption=Done");
+            var browserRef = window.open(requestUrl, "_blank", "location=no,closebuttoncaption=Done,clearsessioncache=yes,clearcache=yes");
             browserRef.addEventListener("loadstart", (event: InAppBrowserEvent) => {
                 if ((event.url).indexOf(this.redirectUrl) != -1) {
                     var parsedResponse = this.parseImplicitResponse(event.url);

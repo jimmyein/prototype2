@@ -9,7 +9,7 @@
 
 <ion-content class="cards-bg social-cards commentCards">
 
-  <ion-card *ngFor="#com of comments">
+  <ion-card *ngFor="let com of comments">
     <ion-item>
       <ion-avatar item-left>
         <img src="{{com.avatarUrl}}">

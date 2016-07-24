@@ -3,20 +3,18 @@
     	<ion-icon name='menu'></ion-icon>
   	</button>
 	<ion-title>
-		Guided Workout
+		Workouts
 	</ion-title>
 </ion-navbar>
 
-<ion-content padding class="workout buttons-fab-page">
+<ion-content class="workout buttons-fab-page">
 	<div>
 		<div style="position: relative;">
-			<!-- Big header -->
-			<div class="nowplaying-container" item-height="70px" item-width="70px">
+			<!--<div class="nowplaying-container" item-height="70px" item-width="70px">
 				<div class="background-imgs-container" item-height="70px" item-width="70px">
 					<img class="background-imgs" height="40px" width="100%" " src="img/motivation-workout-twilight-by-stardragon.jpg ">
 				</div>
 				<div class="background-overlay " height = "40px " item-height="70px " item-width="70px "></div>
-				<!-- Small header -->
 				<div class="header-container ">
 					<div style="width: 100%; height: 10px ">
 						<div class="cover-small-container ">
@@ -35,30 +33,63 @@
 							</div>
 						</div>
 					</div>
-				
 				</div>
+			</div>-->
+
+			<div class="slideshow-container">
+				<div class="mySlides fade">
+					<div class="numbertext">1 / 3</div>
+					<img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcfhB_m4_h400_w600.jpg" style="width:100%">
+					<div class="text">Caption Text</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">2 / 3</div>
+					<img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcfhB_m4_h400_w600.jpg" style="width:100%">
+					<div class="text">Caption Two</div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">3 / 3</div>
+					<img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcfhB_m4_h400_w600.jpg" style="width:100%">
+					<div class="text">Caption Three</div>
+				</div>
+
+				<a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+				<a class="next" (click)="plusSlides(1)">&#10095;</a>
 			</div>
+			<br>
+
+			<div style="text-align:center">
+				<span class="dot" onclick="currentSlide(1)"></span>
+				<span class="dot" onclick="currentSlide(2)"></span>
+				<span class="dot" onclick="currentSlide(3)"></span>
+			</div>
+
+			<!--<div class="featuredWorkoutsContainer">
+				<img class="coverImage" src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcfhB_m4_h400_w600.jpg">
+				<img class="coverImage" src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcfhB_m4_h400_w600.jpg">
+				<img class="coverImage" src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcfhB_m4_h400_w600.jpg">
+				<img class="coverImage" src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcfhB_m4_h400_w600.jpg">
+
+			</div>-->
 			<div class="menuContainer">
-				<span (click)="toogleMenu('DifficultyLevels') " class="menuText " 
-				[ngClass]="{menuSelected: menuCurrentSelect=='DifficultyLevels' } ">
-					Difficulty
+				<span (click)="toogleMenu('DifficultyLevels') " class="menuText " [ngClass]="{menuSelected: menuCurrentSelect=='DifficultyLevels' } ">
+					DIFFICULTY
 				</span>
-				<span (click)="toogleMenu('FocusOptions') " class="menuText " 
-				[ngClass]="{menuSelected: menuCurrentSelect=='FocusOptions'
+				<span (click)="toogleMenu('FocusOptions') " class="menuText " [ngClass]="{menuSelected: menuCurrentSelect=='FocusOptions'
 						} ">
-					Focus
+					FOCUS
 				</span>
-				<span (click)="toogleMenu('BodyPartsOptions') " class="menuText " 
-				[ngClass]="{menuSelected: menuCurrentSelect=='BodyPartsOptions' } ">
-					BodyParts
+				<span (click)="toogleMenu('BodyPartsOptions') " class="menuText " [ngClass]="{menuSelected: menuCurrentSelect=='BodyPartsOptions' } ">
+					BODYPARTS
 				</span>
-				<span (click)="toogleMenu('WorkoutTypeOptions') " class="menuText " 
-				[ngClass]="{menuSelected: menuCurrentSelect=='WorkoutTypeOptions' } ">
-					WorkoutType
+				<span (click)="toogleMenu('WorkoutTypeOptions') " class="menuText " [ngClass]="{menuSelected: menuCurrentSelect=='WorkoutTypeOptions' } ">
+					WORKOUTTYPES
 				</span>
 			</div>
 
-			<ion-grid [hidden]="menuCurrentSelect !='DifficultyLevels' " >
+			<ion-grid [hidden]="menuCurrentSelect !='DifficultyLevels' ">
 				<ion-row wrap>
 					<ion-col class="type-container" width-50 *ngFor="let difficulty of DifficultyLevels ">
 						<img (click)="goToDetailPage( 'DifficultyLevels', difficulty) " class="type-img " src="https://t.scdn.co/media/original/mood-274x274_976986a31ac8c49794cbdc7246fd5ad7_274x274.jpg ">
@@ -67,7 +98,7 @@
 				</ion-row>
 			</ion-grid>
 
-			<ion-grid [hidden]="menuCurrentSelect !='FocusOptions' " >
+			<ion-grid [hidden]="menuCurrentSelect !='FocusOptions' ">
 				<ion-row wrap>
 					<ion-col class="type-container" width-50 *ngFor="let focusOption of FocusOptions ">
 						<img (click)="goToDetailPage( 'FocusOptions', focusOption) " class="type-img " src="https://t.scdn.co/media/original/mood-274x274_976986a31ac8c49794cbdc7246fd5ad7_274x274.jpg ">
@@ -76,7 +107,7 @@
 				</ion-row>
 			</ion-grid>
 
-				<ion-grid [hidden]="menuCurrentSelect !='BodyPartsOptions' " >
+			<ion-grid [hidden]="menuCurrentSelect !='BodyPartsOptions' ">
 				<ion-row wrap>
 					<ion-col class="type-container" width-50 *ngFor="let bodyPartsOption of BodyPartsOptions ">
 						<img (click)="goToDetailPage( 'BodyPartsOptions', bodyPartsOption) " class="type-img " src="https://t.scdn.co/media/original/mood-274x274_976986a31ac8c49794cbdc7246fd5ad7_274x274.jpg ">
@@ -85,7 +116,7 @@
 				</ion-row>
 			</ion-grid>
 
-				<ion-grid [hidden]="menuCurrentSelect !='WorkoutTypeOptions' " >
+			<ion-grid [hidden]="menuCurrentSelect !='WorkoutTypeOptions' ">
 				<ion-row wrap>
 					<ion-col class="type-container" width-50 *ngFor="let workoutTypeOption of WorkoutTypeOptions ">
 						<img (click)="goToDetailPage( 'WorkoutTypeOptions', workoutTypeOption) " class="type-img " src="https://t.scdn.co/media/original/mood-274x274_976986a31ac8c49794cbdc7246fd5ad7_274x274.jpg ">

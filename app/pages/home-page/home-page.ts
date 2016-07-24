@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass} from '@angular/common';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 import {UserService} from '../../Service/UserService';
+import {InMemoryMockDataService} from '../../mockData/mockData';
 
 @Component({
   templateUrl: 'build/pages/home-page/home-page.html',
@@ -10,6 +11,11 @@ import {UserService} from '../../Service/UserService';
   providers: [UserService]
 })
 export class HomePage {
+
+  public activity;
+  public sleep;
+  public socialMetrics;
+
   public doughnutChartLabels: string[] = ['Sleep', 'Activity', 'Diet'];
   public doughnutChartData: number[] = [350, 450, 100];
   public doughnutChartType: string = 'doughnut';
@@ -30,7 +36,11 @@ export class HomePage {
   public showDetail = false;
 
   constructor(private navController: NavController,
-    private userService: UserService) {
+    private userService: UserService,
+    private mockData: InMemoryMockDataService) {
+      this.activity = mockData.activity;
+      this.sleep = mockData.sleep;
+      this.socialMetrics = mockData.socialMetrics;
   }
 
   // events

@@ -4,6 +4,7 @@ import {Comment} from '../model/Comment';
 
 export class InMemoryMockDataService {
 
+  // Comment page
   public comments: Comment[] = [
     {
       id: 1, name: 'Mr. Nice', date: 'November 5, 1955',
@@ -42,7 +43,27 @@ export class InMemoryMockDataService {
             description: "GPS and altimeter/barometer tracks your path, elevation change, and more. Smart alerts remind you to stay hydrated and refuel. Drop points of interest as you go to remember exploration highlights.",
             imageUrl: "http://ionicframework.com/dist/preview-app/www/img/ica-slidebox-img-2.png",
         }
-    ];
+  ];
+
+  // Home page
+  public activity = {
+      metric: "50 hours",
+      title: "Your activity",
+      description: "For a better picture of your daily activity, grab your Band and start moving!"
+  }
+
+  public sleep =  {
+      metric: "41.5 hours",
+      title: "Your sleep",
+      description: "Wear your Band to bed and get a deeper look at how sleep affects your overall health."
+  }
+
+  public socialMetrics = {
+      run: 0.8,
+      bike: 4.2,
+      cardio: 86,
+      step: 845
+  }
 
   constructor() {
   }

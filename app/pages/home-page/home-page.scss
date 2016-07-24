@@ -1,193 +1,252 @@
+// Material design
+// 000000 -> 212121 -> 303030 -> 424242
 
-.chart { 
-    display: block; 
-}
-
-.chartDemo {
+.chartContainer {
     height: 200px;
+
+    .chart { 
+        display: block; 
+    }
 }
 
 .homePage {
-    background-color: #1c1c1f;
+    background-color: #303030;
+
+    .card {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        background-color:#424242;
+    }
+
+    .card-Blue {
+        background:  -webkit-linear-gradient(51deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+        background:  -o-linear-gradient(51deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+        background:  linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+        opacity: 90;
+    }
+
+    .card-Winter {
+        background: #E6DADA; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #E6DADA , #274046); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #E6DADA , #274046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .card-Lost {
+        background: #5D4157; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #5D4157 , #A8CABA); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #5D4157 , #A8CABA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .card-Moor {
+        background: #616161; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #616161 , #9bc5c3); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #616161 , #9bc5c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .card-Aqualicious {
+        background: #50C9C3; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #50C9C3 , #96DEDA); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #50C9C3 , #96DEDA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .card-Dracula {
+        background: #DC2424; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #DC2424 , #4A569D); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #DC2424 , #4A569D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .card-Shadow {
+        background: #000000; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #000000 , #53346D); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #000000 , #53346D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .card-ServQuick {
+        background: #485563; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #485563 , #29323c); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #485563 , #29323c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .card-Paper {
+        background-color: #fff; 
+        background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em);
+        background-size: 100% 1.2em;
+    }
+    
+    h1,h2,h3,
+    div,span {
+        color: #ddd;
+    }
+
+    p {
+        color: lightgray;
+    }
 }
 
-.homePage .card {
-    background-color: #1c1c1c;
-}
-
-.homePage h1,
-.homePage h2,
-.homePage h3,
-.homePage div,
-.homePage span{
-    color: white;
-}
-
-.homePage p {
-    color: lightgray;
-}
-
-
-.chartRadar { 
-    display: block;
-}
-
-.wrapper {
+.social {
   margin: 20px auto;
   width: 300px;
   background-color: transparent;
+
+    .speedometer {
+        width: 300px;
+        height: 150px;
+        background: #2196F3;
+        border-radius: 200px 200px 0 0;
+        position: relative;
+    }
+
+    .speedometer .speedometerMask {
+        width: 280px;
+        height: 140px;
+        background-color:#424242;
+        background-size:16px 16px;
+        border-radius: 200px 200px 0 0;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+
+    .speedometer .pointer {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+    }
+
+    .speedometer .pointer:after {
+        content: "";
+        display: block;
+        width: 60px;
+  	    height: 60px;
+  	    border-radius: 60px;
+  	    background: #2196F3;
+  	    position: absolute;
+  	    bottom: -10px;
+  	    left: -30px;
+    }
+
+
+    .speedometer .pointer:before {
+  	    content: "";
+  	    display: block;
+  	    position: absolute;
+  	    left: -5px;
+  	    bottom: 0px;
+  	    width: 10px;
+  	    height: 100px;
+  	    background: #FFC107;
+  	    border-radius: 40px 40px 0 0;
+  	    transform-origin: center 80px;
+  	    animation: roll 3s;
+  	    animation-iteration-count: 1;
+  	    transform: rotate(60deg);
+    }
+
+    @keyframes roll {
+        from {
+            transform: rotate(-90deg);
+        }
+        to {
+            transform: rotate(60deg);
+        }
+    }
 }
 
-.wrapper .speedometer {
-  width: 300px;
-  height: 150px;
-  background: #496795;
-  border-radius: 200px 200px 0 0;
-  position: relative;
-}
+.panel {
+    .panelData {
+        text-align: center;
+    }
 
-.wrapper .speedometer .speedometerMask {
-  width: 280px;
-  height: 140px;
-  background-color: #1c1c1c;
-  border-radius: 200px 200px 0 0;
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
+    .panelIcon {
+        font-size: 40px;
+        color:#2196F3;
+        margin-bottom: 10px;
+    }
 
-.wrapper .speedometer .pointer {
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-}
+    .panelTitleText {
+        font-size: 15px;
+        color:#FFC107;
+        margin-bottom: 4px;
+    }
 
-.wrapper .speedometer .pointer:after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 60px;
-  border-radius: 60px;
-  background: #6BA4FF;
-  position: absolute;
-  bottom: -10px;
-  left: -30px;
-}
+    .panelMetricNumText {
+        font-size: 20px;
+        color: #ddd;
+    }
 
-.wrapper .speedometer .pointer:before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: -5px;
-  bottom: 0px;
-  width: 10px;
-  height: 100px;
-  background: #FF7235;
-  border-radius: 40px 40px 0 0;
-  transform-origin: center 80px;
-  animation: roll 3s;
-  animation-iteration-count: 1;
-  transform: rotate(60deg);
-}
-
-@keyframes roll {
-  from {
-    transform: rotate(-90deg);
-  }
-  to {
-    transform: rotate(60deg);
-  }
+    .panelMetricUnitText {
+        font-size: 8px;
+        color: #ddd;
+    }
 }
 
 .spacer50 {
     height: 50px;
 }
 
-.panelData {
-    text-align: center;
+.spacer30 {
+    height: 30px;
 }
 
-.panelIcon {
-    font-size: 40px;
-    color:#6BA4FF;
-    margin-bottom: 10px;
-}
-
-.panelTitleText {
-    font-family:  'Segoe UI Light';
-    font-size: 15px;
-    color:#6BA4FF;
-    margin-bottom: 4px;
-}
-
-.panelMetricNumText {
-    font-size: 20px;
-    font-family:  'Segoe UI Light';
-    color: white;
-}
-
-.panelMetricUnitText {
-    font-size: 8px;
-    font-family:  'Segoe UI Light';
-    color: white;
-}
-
-.radarChart {
-    width: 50px;
-    height: 100px;
-}
-
-.myWorkoutList {
+.workoutList {
     height: 200px;
     overflow-y: scroll;
-    background-color:#1c1c1f;
-    color: white;
+    background-color:#303030;
+    color: #ddd;
+
+    .header {
+        color: #ddd;
+        background-color: #3150B4;
+        padding-top: 10px;
+    }
+
+    .item {
+        background-color:#424242;
+        color: #ddd;
+    }
 }
 
-.myWorkoutList .myWorkoutListHeader {
-    color: white;
-}
-
-.myWorkoutList .myWorkoutListItem {
-    background-color:#1c1c1f;
-    color: white;
-}
-
-.calendarListContainer {
+.calendar {
     height: 200px;
     overflow-y: scroll;
+
+    .calendarListItem {
+        background-color:#424242;
+        background-size:16px 16px;
+        color: #ddd;
+    }
 }
 
-.calendarListItem {
-     background-color:#1c1c1f;
-}
-
-.demo {
+.activity {
 
     .descriptionContainer {
         padding-top: 20px;
         display: inline-block;
         position: absolute;
-        width: 150px;
+        width: 50%;
+        padding-right: 14px;
         height: 200px;
     }
 
     .descriptionText {
         position: relative;
         margin-top: 20px;
-        background-color: #1c1c1c;
+        background-color: transparent;
     }
 
     .chart {
         display: inline-block;
-        width: 150px;
+        width: 50%;
         height: 200px;
-        background-color: #1c1c1c;
+        background-color: transparent;
     }
 
     .chartText {
         position: relative;
-        color: white;
+        color: #ddd;
         top: 43%;
         transform: translateY(-50%);
         left: 43px;
