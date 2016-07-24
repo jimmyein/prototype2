@@ -65,6 +65,34 @@ export class InMemoryMockDataService {
       step: 845
   }
 
+  // Store page
+  public featuredWorkouts = [
+    {
+      name: "Beginner Home Workout",
+      description: "This plan blends walking, jogging and running to gradually increase your cardiovascular capacity so you can successfully complete a 5K.",
+      followers: 45567,
+      imageUrl: "https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcfhB_m4_h400_w600.jpg"
+    },
+    {
+      name: "Tabata Intro Squats, Sit-Ups, Push-Ups & Squat Thrusts",
+      description: "This short workout plan is ideal for beginners who are looking for a basic workout that blends bodyweight strength and cardiovascular endurance training.",
+      followers: 47552,
+      imageUrl: "https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfci26_m4_h400_w600.png"
+    },
+    {
+      name: "3 Week Move Every Day",
+      description: "This short workout plan is ideal for beginners who are looking for a basic workout that blends bodyweight strength and cardiovascular endurance training.",
+      followers: 33453,
+      imageUrl: "https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfckFs_m4_h400_w600.png"
+    },
+    {
+      name: "Couch to 5K in 14 Days",
+      description: "This short workout plan is ideal for beginners who are looking for a basic workout that blends bodyweight strength and cardiovascular endurance training.",
+      followers: 16750,
+      imageUrl: "https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcpWT_m4_h400_w600.jpg"
+    },
+  ]
+
   constructor() {
   }
 }

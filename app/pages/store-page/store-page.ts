@@ -4,6 +4,7 @@ import {DetailPage} from '../detail-page/detail-page';
 import {WorkoutServiceClient} from '../../service/workoutServiceClient';
 import {WorkoutDto, QueryDto, OrderBy} from '../../model/Workouts';
 import {WorkoutConstants} from '../../Constants/WorkoutConstants';
+import {InMemoryMockDataService} from '../../mockData/mockData';
 
 
 @Component({
@@ -18,13 +19,15 @@ export class StorePage {
   public featuredWorkoutSlideOptions = {
     loop: true,
     autoplay: 5000,
-    pager: true,
     speed: 200
   };
   public filter: string = "DifficultyLevels";;
+  public featuredWorkouts;
 
   constructor(private navController: NavController,
-    private workoutServiceClient: WorkoutServiceClient) {
+    private workoutServiceClient: WorkoutServiceClient,
+    private mockData: InMemoryMockDataService) {
+      this.featuredWorkouts = mockData.featuredWorkouts;
   }
 
   goToDetailPage(filter: string, value: string) {
