@@ -15,11 +15,16 @@ export class StorePage {
   public FocusOptions: string[] = WorkoutConstants.FocusOptions;
   public BodyPartsOptions: string[] = WorkoutConstants.BodyPartsOptions;
   public WorkoutTypeOptions: string[] = WorkoutConstants.WorkoutTypeOptions;
-  private slideIndex: number = 1;
+  public featuredWorkoutSlideOptions = {
+    loop: true,
+    autoplay: 5000,
+    pager: true,
+    speed: 200
+  };
+  public filter: string = "DifficultyLevels";;
 
   constructor(private navController: NavController,
     private workoutServiceClient: WorkoutServiceClient) {
-      this.showSlides(slideIndex);
   }
 
   goToDetailPage(filter: string, value: string) {
@@ -27,42 +32,4 @@ export class StorePage {
       filter: filter, value: value
     });
   }
-
-  public toogleMenu(select: string) {
-    this.menuCurrentSelect = select;
-  }
-
-  public plusSlides(n: number) {
-    this.showSlides(this.slideIndex += n);
-  }
-
-  public currentSlide(n: number) {
-    this.showSlides(this.slideIndex = n);
-  }
-
-  public showSlides(n: number) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {
-      this.slideIndex = 1;
-    } 
-    
-    if (n < 1) {
-      this.slideIndex = slides.length;
-    }
-
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none"; 
-    }
-
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-
-    slides[this.slideIndex-1].style.display = "block"; 
-    dots[this.slideIndex-1].className += " active";
-  }
-
-
 }

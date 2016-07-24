@@ -4,6 +4,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass} from '@angular/common';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 import {UserService} from '../../Service/UserService';
 import {InMemoryMockDataService} from '../../mockData/mockData';
+import {StatusBar} from 'ionic-native';
 
 @Component({
   templateUrl: 'build/pages/home-page/home-page.html',
@@ -38,6 +39,9 @@ export class HomePage {
   constructor(private navController: NavController,
     private userService: UserService,
     private mockData: InMemoryMockDataService) {
+      StatuBar.overlaysWebView(true);
+      StatusBar.backgroundColorByHexString('#ffffff');
+
       this.activity = mockData.activity;
       this.sleep = mockData.sleep;
       this.socialMetrics = mockData.socialMetrics;

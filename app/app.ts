@@ -29,6 +29,8 @@ export class MyApp {
     private guidedWorkoutService: GuidedWorkoutService
   ) {
 
+    StatuBar.overlaysWebView(true);
+    StatusBar.backgroundColorByHexString('#ffffff');
     var storage = window.localStorage;
     menu.enable(true);
 
