@@ -16,10 +16,6 @@ export class HomePage {
   public sleep;
   public socialMetrics;
 
-  public doughnutChartLabels: string[] = ['Sleep', 'Activity', 'Diet'];
-  public doughnutChartData: number[] = [350, 450, 100];
-  public doughnutChartType: string = 'doughnut';
-
   public lineChartData: Array<any> = [
     [65, 59, 80, 81, 56, 55, 40],
     [28, 48, 40, 19, 86, 27, 90]
