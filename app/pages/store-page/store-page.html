@@ -10,13 +10,13 @@
 <ion-content class="workout">
 	<div>
 		<div>
-			<div class="titleText">FEATURED WORKOUTS</div>
+			<ion-list-header class="titleText">FEATURED WORKOUTS</ion-list-header>
 			<ion-slides [options]="featuredWorkoutSlideOptions" 
 			class="featuredWorkoutSlideShowContainer">
 				<ion-slide *ngFor="let workout of featuredWorkouts">
 					<img class="image" src="{{workout.imageUrl}}">
 					<ion-card class="card">
-						<ion-card-header class="text">
+						<ion-card-header class="text name">
 							{{workout.name}}
 						</ion-card-header>
 						<ion-card-content class="text description">

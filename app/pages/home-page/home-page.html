@@ -146,5 +146,63 @@
     </div>
   </ion-card>-->
 
+  <ion-card class="card achievement">
+    <ion-list-header class="header">
+      MY GOALS FOR THIS WEEK
+    </ion-list-header>
+
+    <ion-list class="goalList" no-lines>
+
+      <ion-item>
+        <ion-icon name="checkbox-outline"></ion-icon>
+        <span class="text">Monday - Do the Couch to 5k - Day 2 guided workout at 7PM.</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="square-outline"></ion-icon>
+        <span class="text">Thursday - Play soccer with my kids at the park for 30 minutes.</span>
+      </ion-item>
+    </ion-list>
+
+    <img class="image" src="img/GoldenDumbbell.svg">
+    <div class="descriptionContainer">
+      <ion-list-header class="fitListHeader">THE GOLDEN DUMBBELL</ion-list-header>
+      <span class="text">You've done a workout every day this week! All that hard work will lead you to a healthier lifestyle.</span>
+    </div>
+  </ion-card>
+
+  <ion-card class="card comments" *ngFor="let com of comments">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{com.avatarUrl}}">
+      </ion-avatar>
+      <h2>{{com.name}}</h2>
+      <p>{{com.date}}</p>
+    </ion-item>
+    <img src="{{com.imageUrl}}">
+    <ion-card-content>
+      <p>{{com.content}}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button primary clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>{{com.likes}}</div>
+      </button>
+      </ion-col>
+      <ion-col>
+        <button primary clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>{{com.ammountComments}}</div>
+      </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          {{com.lastUpdate}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
 
 </ion-content>

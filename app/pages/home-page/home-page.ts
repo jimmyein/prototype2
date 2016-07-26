@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass} from '@angular/common';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 import {UserService} from '../../Service/UserService';
+import {Comment} from '../../model/Comment';
 import {InMemoryMockDataService} from '../../mockData/mockData';
 
 @Component({
@@ -15,6 +16,7 @@ export class HomePage {
   public activity;
   public sleep;
   public socialMetrics;
+  public comments: Comment[];
   public events = null;
   public showDetail = false;
 
@@ -24,6 +26,7 @@ export class HomePage {
       this.activity = mockData.activity;
       this.sleep = mockData.sleep;
       this.socialMetrics = mockData.socialMetrics;
+      this.comments = mockData.comments;
   }
 
   public chartClicked(e: any): void {

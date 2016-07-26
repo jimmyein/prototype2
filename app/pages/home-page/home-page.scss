@@ -1,5 +1,10 @@
 // Material design
 // 000000 -> 212121 -> 303030 -> 424242
+.fitListHeader {
+    color: #ddd;
+    background-color: #424242;
+    padding-top: 10px;
+}
 
 .chartContainer {
     height: 200px;
@@ -194,19 +199,20 @@
 .workoutList {
     background-color:#303030;
     color: #ddd;
-    height: 260px;
     overflow: hidden;
 
     .header {
         color: #ddd;
         background-color: #424242;
         padding-top: 10px;
+        margin-top: 0;
     }
 
     .item {
         background-color:#424242;
         color: #ddd;
-        height: 100px;        
+        height: 100px;
+        border-bottom: none !important;     
     }
 
     ion-list + ion-list {
@@ -368,5 +374,83 @@
         padding-left: 16px;
         padding-top: 10px;
         padding-bottom: 10px;
+    }
+}
+
+
+.achievement {
+	.image {
+		height: 80px;
+		width: 25%;
+        display: inline-block;
+	}
+
+    .header {
+        color: #ddd;
+        background-color: #424242;
+        padding-top: 10px;
+    }
+
+    .goalList {
+        background-color: #424242;
+        color: white;
+        width: 100%;
+
+        .item {
+            background-color: #424242;
+            color: white;
+        }
+
+        .text {
+            font-size: 14px;
+            display: inline-block;
+            white-space: nowrap;
+  			overflow: hidden;
+  		    text-overflow: ellipsis;
+        }
+    }
+
+    .descriptionContainer {
+        display: inline-block;
+        width: 69%;
+        height: 100%;
+        margin-right: 16px;
+        height: 110px;
+
+        .text {
+            margin-left: 16px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    }
+}
+
+.comments {
+    background-color: #424242;
+
+    ion-card {
+        position: relative;
+        text-align: center;
+    }
+
+    .item {
+        background-color: #424242;
+    }
+
+    .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 2.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .card-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        top: 52%;
+        width: 100%;
+        color: #fff;
     }
 }

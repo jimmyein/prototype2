@@ -21,7 +21,6 @@
 		width: 100%;
 		position: relative;
 		margin: auto;
-		height: 350px;
 		overflow: hidden;
 		background-color: #424242;
 
@@ -39,16 +38,21 @@
 				color: #ddd;
 				padding-top: 0;
 				padding-bottom: 0;
-				padding-right: 10px;
-				padding-left: 10px;
+				padding-right: 16px;
+				padding-left: 16px;
 				width: 100%;
 				text-align: left;
+			}
+
+			.name {
+				padding-bottom: 10px;
 			}
 
 			.description {
 				white-space: nowrap;
   				overflow: hidden;
   				text-overflow: ellipsis;
+				padding-bottom: 10px;
 			}
 		}
 	}
