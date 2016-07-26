@@ -89,29 +89,3 @@
   margin-top: 0.2em;
   background: white;
 }
-
-.workoutList {
-  height: 260px;
-  overflow: hidden;
-
-  ion-list + ion-list {
-    margin-top: 0;
-  }
-
-  .item {
-    height: 100px;
-  }
-
-  .myWorkoutListItem {
-
-    .avatar {
-      height: 40px;
-      width: 40px;
-    }
-
-    ion-avatar img {
-      max-width: none;
-      max-height: none;
-    }
-  }
-}
