@@ -81,7 +81,7 @@
     </ion-list>
   </ion-card>
 
-  <ion-card class="card">
+  <!--<ion-card class="card">
     <div class="social">
       <div class="speedometer">
         <div class="speedometerMask"></div>
@@ -115,9 +115,26 @@
         <div class="panelMetricUnitText">STEPS</div>
       </ion-col>
     </ion-row>
+  </ion-card>-->
+
+  <ion-card class="card muscle">
+    <ion-list-header class="header">Muscle Map</ion-list-header>
+    <img class="image" src="img/MuscleMap-Back.svg">
+    <img class="image" src="img/MuscleMap-Front.svg">
+    <ion-list-header class="header">
+      <ion-icon class="primaryDot" name="information-circle"></ion-icon>
+      <span class="dotText">Primary</span>
+      <ion-icon class="secondaryDot" name="information-circle"></ion-icon>
+      <span class="dotText">Secondary</span>
+      <ion-icon class="TirtiaryDot" name="information-circle"></ion-icon>
+      <span>Tirtiary</span>
+    </ion-list-header>
+    <div class="tips">
+      It looks like you're working your legs a lot! Try switching it up with an upper body workout tomorrow.
+    </div>
   </ion-card>
 
-  <ion-card class="card calendar">
+  <!--<ion-card class="card calendar">
     <button (click)="getEvents()">Get Calendar</button>
     <div [hidden]="events == null">
       <ion-list>
@@ -127,6 +144,7 @@
         </ion-item>
       </ion-list>
     </div>
-  </ion-card>
+  </ion-card>-->
+
 
 </ion-content>
