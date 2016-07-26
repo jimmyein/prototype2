@@ -9,22 +9,32 @@
 
   <ion-card class="activity card">
     <div>
+      <ion-list-header class="header">7.20-7.26</ion-list-header>
       <div class="chart activity">
         <div class="chartText">{{activity.metric}}</div>
         <svg width="140" height="140">
           <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#4CAF50" fill="none" />
         </svg>
+        <div class="activityTitle">{{activity.title}}</div>
       </div>
-      <div class="descriptionContainer">
+
+      <div class="chart sleep">
+        <div class="chartText">{{sleep.metric}}</div>
+        <svg width="140" height="140">
+          <circle id="circle" class="circle_animation" r="60" cy="71" cx="71" stroke-width="9" stroke="#3F51B5" fill="none" />
+        </svg>
+        <div class="sleepTitle">{{sleep.title}}</div>
+      </div>
+      <!--<div class="descriptionContainer">
         <h1>{{activity.title}}</h1>
         <div class="descriptionText">
           {{activity.description}}
         </div>
-      </div>
+      </div>-->
     </div>
   </ion-card>
 
-  <ion-card class="activity card">
+  <!--<ion-card class="activity card">
     <div class="chart sleep">
       <div class="chartText">{{sleep.metric}}</div>
       <svg width="140" height="140">
@@ -38,7 +48,7 @@
         {{sleep.description}}
       </div>
     </div>
-  </ion-card>
+  </ion-card>-->
 
   <ion-card class="card workoutList">
     <ion-list>
@@ -46,29 +56,12 @@
         Today
       </ion-list-header>
 
-      <ion-item class="item">
-        <ion-avatar item-left>
-          <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcdkc_m4_h400_w600.jpg">
-        </ion-avatar>
-        <h2>Tabata Squat Thrusts</h2>
-        <h3>Muscle Endurance</h3>
-        <button clear (click)="toggle()">Detail</button>
-        <p class="wrap" [hidden]="!showDetail">The Tabata Protocol is a four-minute, high intensity workout where you perform as many reps as possible during a
-          20 second work period, followed by 10 seconds of rest, repeated 8 times.</p>
-        <div [hidden]="!showDetail">
-          <base-chart class="chart" [data]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [chartType]="lineChartType"></base-chart>
-        </div>
-      </ion-item>
-
       <ion-item class="myWorkoutListItem">
         <ion-avatar item-left>
-          <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcaHm_m4_h400_w600.png">
+          <img class="image" src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcaHm_m4_h400_w600.png">
         </ion-avatar>
         <h2>Tabata Lunges</h2>
-        <h3>Muscle Endurance</h3>
-        <p class="wrap">Perform as many reps as possible during the 20 seconds of work, rest for 10 The Tabata Protocol is a four-minute,
-          high intensity workout where you perform as many reps as possible during a 20 second work period, followed by 10
-          seconds of rest, repeated 8 times.</p>
+        <h3>Estimate duration 27 MIN.</h3>
       </ion-item>
 
     </ion-list>
@@ -80,12 +73,10 @@
 
       <ion-item class="myWorkoutListItem">
         <ion-avatar item-left>
-          <img src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcntA_m4_h400_w600.jpg">
+          <img class="image" src="https://img.stb.s-msn.com/usappex/tenant/amp/entityid/BBfcntA_m4_h400_w600.jpg">
         </ion-avatar>
         <h2>Tabata Planks</h2>
-        <h3>Muscle Endurance</h3>
-        <p class="wrap">The Tabata Protocol is a four-minute, high intensity workout where you perform as many reps as possible during a
-          20 second work period, followed by 10 seconds of rest, repeated 8 times.</p>
+        <h3>Estimate duration 14 MIN.</h3>
       </ion-item>
     </ion-list>
   </ion-card>
