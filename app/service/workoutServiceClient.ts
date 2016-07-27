@@ -40,7 +40,7 @@ export class WorkoutServiceClient {
     }
 
     public getExercisesById(Id: string) {
-        var getExercisesByIdUrl = HttpServiceBase.urlConstructor(this.getExercisesByIdBase, { key: "id", value: false });
+        var getExercisesByIdUrl = HttpServiceBase.urlConstructor(this.getExercisesByIdBase, { key: "id", value: Id });
 
         return this.httpServiceBase.apiGet(getExercisesByIdUrl,
             data => {
