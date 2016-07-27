@@ -43,10 +43,6 @@ export class DetailPage {
     this.navController.present(this.loading);
   }
 
-  public getExercisesById(): Promise<Object> {
-    return this.workoutServiceClient.getExercisesById();
-  }
-
   private getExercises(): Promise<Object> {
     switch (this.filter) {
       case "DifficultyLevels":
@@ -72,7 +68,7 @@ export class DetailPage {
 
   public goToDetail(workoutPlan: FitnessSearchResultSchema) {
     this.presentLoading();
-    this.workoutServiceClient.getExercisesById().then(response => {
+    this.workoutServiceClient.getExercisesById(workoutPlan.id).then(response => {
       this.loading.dismiss();
       var exerciseDetail = this.guidedWorkoutService.getExercisesById();
 
