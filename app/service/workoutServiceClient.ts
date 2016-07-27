@@ -10,6 +10,7 @@ interface MyEvent extends Event {
 export class WorkoutServiceClient {
     private getExercisesAPIBase = "api/workout/GetExercises";
     private searchWorkoutPlansAPIBase = "api/workout/SearchWorkoutPlans";
+    private getExercisesByIdBase = "api/workout/GetExercisesById";
 
     constructor(private httpServiceBase: HttpServiceBase,
         private guidedWorkoutService: GuidedWorkoutService) {

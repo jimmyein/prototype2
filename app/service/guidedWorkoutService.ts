@@ -13,6 +13,15 @@ export class GuidedWorkoutService {
 
     private workouts: ExerciseSearchResultDTO[];
     private _exercises : ExerciseSearchResultDTO[];
+    private exercisesById: Object;
+
+    public getExercisesById() {
+        return this.exercisesById;
+    }
+
+    public setExercisesById(exercise) {
+        this.exercisesById = exercise;
+    }
 
     public get exercises() : ExerciseSearchResultDTO[] {
         return this._exercises;

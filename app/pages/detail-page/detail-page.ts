@@ -28,7 +28,7 @@ export class DetailPage {
     this.value = navParams.get("value");
 
     this.presentLoading();
-    this.getWorkoutPlans().then((response) => {
+    this.workoutServiceClient.searchWorkoutPlans().then((response) => {
       this.loading.dismiss();
       this.workoutPlans = this.guidedWorkoutService.getWokroutPlans().results;
     });
@@ -43,8 +43,8 @@ export class DetailPage {
     this.navController.present(this.loading);
   }
 
-  private getWorkoutPlans(): Promise<Object> {
-    return this.workoutServiceClient.searchWorkoutPlans();
+  private getExercisesById(): Promise<Object> {
+    return this.workoutServiceClient.getExercisesById2();
   }
 
   private getExercises(): Promise<Object> {

@@ -1,4 +1,17 @@
-<ion-content>
+<ion-navbar *navbar dark>
+  <button menuToggle>
+    <ion-icon name='menu'></ion-icon>
+  </button>
+  <ion-title>
+    {{workoutPlan.name}}
+  </ion-title>
+</ion-navbar>
+
+<ion-content class="workoutPlanDetail">
+    <div class="headerImage">
+        <img src="{{workoutPlan.image}}">
+    </div>
+
     <div>JSON</div>
     <div>{{workoutPlan | json}}</div>
 </ion-content>
