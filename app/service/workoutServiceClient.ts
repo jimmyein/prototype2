@@ -39,6 +39,17 @@ export class WorkoutServiceClient {
         );
     }
 
+    public getExercisesById(Id: string) {
+        var getExercisesByIdUrl = HttpServiceBase.urlConstructor(this.getExercisesByIdBase, { key: "id", value: false });
+
+        return this.httpServiceBase.apiGet(getExercisesByIdUrl,
+            data => {
+                this.guidedWorkoutService.setExercisesById(data);
+            },
+            true
+        );
+    }
+
     public getExercises(count?: number, pageNumber?: number, queryFilter?: string, queryValue?: string): Promise<Object> {
         var getExercisesAPIUrl = HttpServiceBase.urlConstructor(this.getExercisesAPIBase, { key: "token", value: false },
             { key: "count", value: count }, { key: "pageNumber", value: pageNumber }, { key: queryFilter, value: queryValue });

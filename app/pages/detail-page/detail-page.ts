@@ -44,7 +44,7 @@ export class DetailPage {
   }
 
   private getExercisesById(): Promise<Object> {
-    return this.workoutServiceClient.getExercisesById2();
+    return this.workoutServiceClient.getExercisesById();
   }
 
   private getExercises(): Promise<Object> {
