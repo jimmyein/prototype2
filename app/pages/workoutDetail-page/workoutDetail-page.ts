@@ -8,8 +8,10 @@ import {FitnessSearchResultSchema} from '../../model/FitnessSearchResultSchema';
 })
 export class workoutDetailPage {
   public workoutPlan: FitnessSearchResultSchema;
+  public exercises;
 
   constructor(navParams: NavParams) {
     this.workoutPlan = navParams.get("workoutPlan");
+    this.exercises = navParams.get("exerciseDetail");
   }
 }

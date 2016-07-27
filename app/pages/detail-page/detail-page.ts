@@ -43,7 +43,7 @@ export class DetailPage {
     this.navController.present(this.loading);
   }
 
-  private getExercisesById(): Promise<Object> {
+  public getExercisesById(): Promise<Object> {
     return this.workoutServiceClient.getExercisesById();
   }
 
@@ -71,7 +71,13 @@ export class DetailPage {
   }
 
   public goToDetail(workoutPlan: FitnessSearchResultSchema) {
-    this.navController.push(workoutDetailPage,
-      { workoutPlan: workoutPlan });
+    this.presentLoading();
+    this.workoutServiceClient.getExercisesById().then(response => {
+      this.loading.dismiss();
+      var exerciseDetail = this.guidedWorkoutService.getExercisesById();
+
+      this.navController.push(workoutDetailPage,
+      { workoutPlan: workoutPlan, exerciseDetail });
+    });
   }
 }
