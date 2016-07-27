@@ -1,7 +1,46 @@
 .workoutPlanDetail {
     background-color: #303030;
+
+    .header {
+        color: #ddd;
+        background-color: #424242;
+        padding-top: 10px;
+    }
     
     .headerImage {
-        height: 300px;
+        height: 200px;
+    }
+
+    .social {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+
+        ul{
+            list-style-type:none;
+            white-space:nowrap;
+            overflow-x:auto;
+            padding-left: 16px;
+        }
+
+        li{
+            display:inline;
+        }
+
+        img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+    }
+
+    .twitterText {
+        color: #304FFE;
+        font-size: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 16px;
     }
 }

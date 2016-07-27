@@ -70,10 +70,12 @@ export class DetailPage {
     this.presentLoading();
     this.workoutServiceClient.getExercisesById(workoutPlan.id).then(response => {
       this.loading.dismiss();
-      var exerciseDetail = this.guidedWorkoutService.getExercisesById();
+      //var exerciseDetail = this.guidedWorkoutService.getExercisesById();
 
-      this.navController.push(workoutDetailPage,
-      { workoutPlan: workoutPlan, exerciseDetail });
+  
     });
+
+        this.navController.push(workoutDetailPage,
+      { workoutPlan: workoutPlan });
   }
 }

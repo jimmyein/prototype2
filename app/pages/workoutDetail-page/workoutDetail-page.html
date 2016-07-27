@@ -8,11 +8,99 @@
 </ion-navbar>
 
 <ion-content class="workoutPlanDetail">
-    <div class="headerImage">
-        <img src="{{workoutPlan.image}}">
-    </div>
+  <div class="headerImage">
+    <img src="{{workoutPlan.image}}">
+  </div>
+  <ion-list>
+    <ion-list-header class="header">
+      Exercises
+    </ion-list-header>
+    <ion-item>Squat</ion-item>
+    <ion-item>Rest</ion-item>
+    <ion-item>Sit-up</ion-item>
+    <ion-item>Rest</ion-item>
+    <ion-item>Pushup</ion-item>
+    <ion-item>Rest</ion-item>
+    <ion-item>Squat Thrusts</ion-item>
+    <ion-item>Rest</ion-item>
+  </ion-list>
 
-    <div>JSON</div>
-    <div>{{workoutPlan | json}}</div>
-    <div>{{exercises | json}}</div>
+  <ion-list>
+    <ion-list-header class="header">
+      Description
+    </ion-list-header>
+    <ion-item>
+      Duration
+      <span item-right>{{workoutPlan.duration}}</span>
+    </ion-item>
+
+    <ion-item>
+      Gender
+      <span item-right>{{workoutPlan.gender}}</span>
+    </ion-item>
+
+    <ion-item>
+      Type
+      <span item-right>{{workoutPlan.type}}</span>
+    </ion-item>
+
+    <ion-item>
+      Level
+      <span item-right>{{workoutPlan.level}}</span>
+    </ion-item>
+
+    <ion-item>
+      Body Parts
+      <span item-right>{{workoutPlan.bdyparts}}</span>
+    </ion-item>
+  </ion-list>
+
+  <ion-list-header class="header">
+    Social Media
+  </ion-list-header>
+  <div class="twitterText">
+    <ion-icon name="logo-twitter"></ion-icon>
+    FOLLOW #ARRARON ON TWITTER
+  </div>
+
+  <ion-list-header class="header">
+    People also followed #ARRARON
+  </ion-list-header>
+  <div class="social">
+    <ul>
+      <li>
+        <img src="img/profileImg1.jpg">
+      </li>
+      <li>
+        <img src="img/profileImg2.jpg">
+      </li>
+      <li>
+        <img src="img/profileImg3.jpg">
+      </li>
+      <li>
+        <img src="img/profileImg4.jpg">
+      </li>
+      <li>
+        <img src="img/profileImg5.jpg">
+      </li>
+       <li>
+        <img src="img/profileImg1.jpg">
+      </li>
+      <li>
+        <img src="img/profileImg2.jpg">
+      </li>
+      <li>
+        <img src="img/profileImg3.jpg">
+      </li>
+      <li>
+        <img src="img/profileImg4.jpg">
+      </li>
+      <li>
+        <img src="img/profileImg5.jpg">
+      </li>
+    </ul>
+  </div>
+  <!--<div>JSON</div>-->
+  <!--<div>{{workoutPlan | json}}</div>-->
+  <!--<div>{{exercises | json}}</div>-->
 </ion-content>
