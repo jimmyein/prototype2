@@ -27,7 +27,7 @@ export class StorePage {
     private workoutServiceClient: WorkoutServiceClient,
     private mockData: InMemoryMockDataService) {
       this.featuredWorkouts = mockData.featuredWorkouts;
-      this.filter = "FocusOptions";
+      this.filter = "WorkoutTypeOptions";
   }
 
   goToDetailPage(filter: string, value: string) {
